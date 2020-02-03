@@ -1,0 +1,112 @@
+.header{
+  height: 64px;
+  background-color: $color-secondary-dark;
+  box-shadow: $shadow;
+  display: flex;
+
+  color: $color-white;
+  & > *{
+    margin-right: 10px;
+
+  }
+  & > * > *{
+    border-radius: 3px;
+    &:hover{
+      background-color: $color-secondary-light;
+    }
+  }
+  &__logo{
+    width: 64px;
+    height: 100%;
+    background-color: #fc5f39;//$color-primary-dark;
+    position: relative;
+    i{
+      color: $color-white;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:hover{
+      background-color: $color-primary-light;
+    }
+
+  }
+  &__title{
+    flex: 1;
+    padding-top: auto;
+    display: flex;
+    align-items: center;
+    h3{
+      flex: 1;
+    }
+  }
+  &__search{
+    flex: 3;
+    display: flex;
+
+    &-input{
+      flex: 2;
+      color: $color-white;
+      margin-right: 15px;
+      padding: 10px;
+      display: flex;
+      position: relative;
+      input{
+        color: $color-white;
+        font-size: 18px;
+        font-weight: 400;
+        background-color: $color-secondary-light;
+        line-height: 32px;
+        border-radius: 1px;
+        border: none;
+        padding: 5px;
+        width: 100%;
+      }
+      .search-icon{
+        align-self: center;
+        margin-left: -25px;
+      }
+    }
+    &-title{
+      flex: 1;
+      align-self: center;
+    }
+  }
+  &__icons{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+    &-block{
+        &:not(:last-child){
+          margin-right: 2rem;
+        }
+    }
+
+  }
+  &__profile{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon{
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background-color: $color-white;
+    }
+    &-label{
+      flex:1;
+      display: flex;
+      align-items: center;
+
+      & > *{
+        margin: 5px;
+      }
+    }
+  }
+}

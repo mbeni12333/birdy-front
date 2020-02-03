@@ -1,0 +1,95 @@
+
+.card-container{
+  padding: 10px;
+  width: 100%;
+
+  .card{
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: $shadow;
+    position: relative;
+
+    &--wall{
+      height: 500px;
+      display: flex;
+      padding: 0;
+      flex-direction: column;
+      .wall{
+        &__img{
+          flex: 3;
+          background-image: linear-gradient(to bottom right,
+           #68b7f9, #aff7c9);
+        }
+        &__profile{
+          height: 128px;
+          width: 100%;
+          position: absolute;
+          margin-left: 10px;
+          top: 270px;
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          &-picture{
+            height: 100%;
+            width: 128px;
+            background-color: $color-grey-light-1;
+            box-shadow: $shadow;
+
+            border-radius: 50%;
+            margin-right: 330px;
+            border: 5px solid $color-white;
+          }
+          &-buttons{
+            width: 200px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-around;
+            &-button{
+              background-color: #946de1;
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              font-size: 24px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              color: $color-white;
+
+            }
+          }
+        }
+        &__links{
+          flex: 1;
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          text-align: center;
+          align-items: center;
+          &-link{
+            &:first-child{
+              color: $color-black;
+              font-weight: bold;
+            }
+            color: #d3d5db;
+            flex: 1;
+          }
+        }
+      }
+    }
+    &--intro{
+      height: 350px;
+    }
+    &--timeline{
+      height: 800px;
+    }
+    &--photos{
+      height: 350px;;
+    }
+  }
+
+
+}

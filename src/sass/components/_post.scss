@@ -1,0 +1,13 @@
+.main{
+  background-color: $color-grey-light-1;
+}
+.content{
+  padding-left: 64px;
+  padding-right: 64px;
+  display: flex;
+  flex-direction: column;
+  &__body{
+    width: 100%;
+    display: flex;
+  }
+}

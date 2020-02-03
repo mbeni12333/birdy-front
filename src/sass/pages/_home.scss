@@ -1,0 +1,47 @@
+.root{
+  background-color: $color-grey-light-1;
+}
+.App{
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  height: 64px;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+}
+
+.main_container{
+  margin-top: 64px;
+  width: 100%;
+  @include clearfix;
+
+  .main{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    min-height: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    float: left;
+  }
+
+  .nav{
+  position: fixed;
+
+    &--left{
+      float: left;
+    }
+    &--right{
+      right: 0;
+    }
+  }
+}

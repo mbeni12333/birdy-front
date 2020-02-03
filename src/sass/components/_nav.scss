@@ -1,0 +1,33 @@
+.nav{
+  width: 64px;
+  height: 100%;
+  background-color: $color-white;
+  box-shadow: $shadow;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &--left{
+
+  }
+  &--right{
+
+  }
+
+  &__element{
+    &:first-child{
+      margin-top: 10px;
+    }
+    height: 64px;
+    margin-bottom: 5px;
+    padding: 5px;
+    &-icon{
+      color: #cbcdde;
+      font-size: 24px;
+      height: 100%;
+      &:hover{
+        color: $color-primary-light;
+      }
+    }
+  }
+}
