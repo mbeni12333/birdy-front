@@ -45,7 +45,9 @@
   &__search{
     flex: 3;
     display: flex;
-
+    @media (max-width:700px){
+      display: none;
+    }
     &-input{
       flex: 2;
       color: $color-white;
@@ -80,6 +82,9 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: 30px;
+    @media (max-width:700px){
+      display: none;
+    }
     &-block{
         &:not(:last-child){
           margin-right: 2rem;
@@ -92,18 +97,27 @@
     height: 100%;
     display: flex;
     align-items: center;
+    @media (max-width:700px){
+      justify-content: flex-end;
+    }
     &-icon{
       width: 50px;
       height: 50px;
       margin-right: 10px;
       border-radius: 50%;
-      background-color: $color-white;
+      background-image: url("images/gintoki.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
     }
     &-label{
       flex:1;
       display: flex;
       align-items: center;
-
+      @media (max-width:700px){
+        display: none;
+      }
       & > *{
         margin: 5px;
       }

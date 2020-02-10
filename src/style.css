@@ -130,17 +130,27 @@ body {
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
   text-align: center;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  z-index: 10; }
+  @media (max-width: 700px) {
+    .nav--left {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      flex-direction: row;
+      width: 100%;
+      height: 64px;
+      justify-content: space-around;
+      align-items: center; } }
+  @media (max-width: 700px) {
+    .nav--right {
+      display: none; } }
   .nav__element {
-    height: 64px;
-    margin-bottom: 5px;
+    width: 64px;
     padding: 5px; }
-    .nav__element:first-child {
-      margin-top: 10px; }
     .nav__element-icon {
       color: #cbcdde;
-      font-size: 24px;
-      height: 100%; }
+      font-size: 24px; }
       .nav__element-icon:hover {
         color: #ffb900; }
 
@@ -180,6 +190,9 @@ body {
   .header__search {
     flex: 3;
     display: flex; }
+    @media (max-width: 700px) {
+      .header__search {
+        display: none; } }
     .header__search-input {
       flex: 2;
       color: #fff;
@@ -209,6 +222,9 @@ body {
     align-items: center;
     justify-content: flex-end;
     padding-right: 30px; }
+    @media (max-width: 700px) {
+      .header__icons {
+        display: none; } }
     .header__icons-block:not(:last-child) {
       margin-right: 2rem; }
   .header__profile {
@@ -216,16 +232,25 @@ body {
     height: 100%;
     display: flex;
     align-items: center; }
+    @media (max-width: 700px) {
+      .header__profile {
+        justify-content: flex-end; } }
     .header__profile-icon {
       width: 50px;
       height: 50px;
       margin-right: 10px;
       border-radius: 50%;
-      background-color: #fff; }
+      background-image: url("images/gintoki.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
     .header__profile-label {
       flex: 1;
       display: flex;
       align-items: center; }
+      @media (max-width: 700px) {
+        .header__profile-label {
+          display: none; } }
       .header__profile-label > * {
         margin: 5px; }
 
@@ -237,16 +262,107 @@ body {
   padding-right: 64px;
   display: flex;
   flex-direction: column; }
+  @media (max-width: 700px) {
+    .content {
+      padding: 0; } }
   .content__body {
     width: 100%;
     display: flex; }
 
+.post-container {
+  margin-bottom: 10px; }
+
+.post {
+  display: flex; }
+  .post__aside {
+    flex: 1;
+    min-width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 20px; }
+    .post__aside-element--picture {
+      height: 44px;
+      width: 100%;
+      border-radius: 50%;
+      background-image: url("images/gintoki.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+    .post__aside-element--bar {
+      flex: 1;
+      border-left: 3px solid #f4f4f4;
+      align-self: center; }
+    .post__aside-element--icon {
+      height: 26px;
+      font-size: 14px;
+      color: #777; }
+  .post__content {
+    display: flex;
+    flex-direction: column; }
+    .post__content-header {
+      padding-left: 10px;
+      height: 26px;
+      font-size: 14px; }
+    .post__content-person {
+      display: flex;
+      color: #000;
+      padding-left: 10px;
+      align-items: center; }
+      .post__content-person > *:not(:last-child) {
+        margin-right: 5px; }
+      .post__content-person-link {
+        font-size: 14px;
+        color: #777; }
+      .post__content-person-time {
+        color: #777;
+        font-size: 14px; }
+    .post__content-body {
+      line-height: 22px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch; }
+      .post__content-body__photo {
+        margin-top: 10px;
+        min-height: 150px; }
+        .post__content-body__photo img {
+          width: 100%;
+          border: 1px solid #777;
+          border-radius: 20px; }
+        .post__content-body__photo:hover {
+          background-color: #f4f4f4; }
+    .post__content-footer {
+      display: flex;
+      padding: 10px;
+      justify-content: space-between; }
+
 .card-container {
   padding: 10px;
   width: 100%; }
+  .card-container--intro {
+    height: 350px;
+    flex: 1; }
+    @media (max-width: 700px) {
+      .card-container--intro {
+        display: none; } }
+  .card-container--timeline {
+    height: 800px;
+    flex: 2; }
+    @media (max-width: 700px) {
+      .card-container--timeline {
+        flex: 1; } }
+  .card-container--photos {
+    height: 350px;
+    flex: 1; }
+    @media (max-width: 700px) {
+      .card-container--photos {
+        display: none; } }
   .card-container .card {
     width: 100%;
-    padding: 10px;
+    height: 100%;
     border-radius: 3px;
     background-color: #fff;
     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
@@ -263,18 +379,28 @@ body {
         height: 128px;
         width: 100%;
         position: absolute;
-        margin-left: 10px;
-        top: 270px;
-        display: flex;
-        justify-content: end;
-        align-items: end; }
+        top: 210px;
+        transform: translate(0, 50%);
+        display: flex; }
+        @media (max-width: 700px) {
+          .card-container .card--wall .wall__profile {
+            top: 100px; } }
+        .card-container .card--wall .wall__profile-container {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end; }
         .card-container .card--wall .wall__profile-picture {
           height: 100%;
           width: 128px;
-          background-color: #f4f4f4;
+          transform: translate(50%, 0);
+          background-image: url("images/gintoki.jpg");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
           border-radius: 50%;
-          margin-right: 330px;
           border: 5px solid #fff; }
         .card-container .card--wall .wall__profile-buttons {
           width: 200px;
@@ -282,8 +408,11 @@ body {
           align-items: center;
           text-align: center;
           justify-content: space-around; }
+          @media (max-width: 700px) {
+            .card-container .card--wall .wall__profile-buttons {
+              display: none; } }
           .card-container .card--wall .wall__profile-buttons-button {
-            background-color: #946de1;
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -292,6 +421,12 @@ body {
             flex-direction: column;
             justify-content: center;
             color: #fff; }
+            .card-container .card--wall .wall__profile-buttons-button--1 {
+              background-color: #03A9F4; }
+            .card-container .card--wall .wall__profile-buttons-button--2 {
+              background-color: #ff7730; }
+            .card-container .card--wall .wall__profile-buttons-button--3 {
+              background-color: #607D8B; }
       .card-container .card--wall .wall__links {
         flex: 1;
         width: 80%;
@@ -300,23 +435,32 @@ body {
         display: flex;
         text-align: center;
         align-items: center; }
+        @media (max-width: 700px) {
+          .card-container .card--wall .wall__links {
+            flex: 2;
+            flex-direction: column;
+            margin-top: 20px;
+            align-items: stretch;
+            justify-content: center; } }
         .card-container .card--wall .wall__links-link {
           color: #d3d5db;
-          flex: 1; }
+          flex: 1;
+          border-radius: 3px;
+          display: block;
+          transition: all 0.3s; }
           .card-container .card--wall .wall__links-link:first-child {
             color: #000;
             font-weight: bold; }
-    .card-container .card--intro {
-      height: 350px; }
-    .card-container .card--timeline {
-      height: 800px; }
-    .card-container .card--photos {
-      height: 350px; }
+          .card-container .card--wall .wall__links-link:hover {
+            background-color: #f4f4f4; }
 
 .wall {
   width: 100%;
   padding: 10px;
   height: 500px; }
+  @media (max-width: 700px) {
+    .wall {
+      padding: 0; } }
 
 .row {
   max-width: 114rem;

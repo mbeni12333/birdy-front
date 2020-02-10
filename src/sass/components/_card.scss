@@ -2,10 +2,31 @@
 .card-container{
   padding: 10px;
   width: 100%;
-
+  &--intro{
+    height: 350px;
+    flex: 1;
+    @media (max-width:700px){
+      display: none;
+    }
+  }
+  &--timeline{
+    height: 800px;
+    flex: 2;
+    @media (max-width:700px){
+      flex:1;
+    }
+  }
+  &--photos{
+    height: 350px;
+    flex: 1;
+    @media (max-width:700px){
+      display: none;
+    }
+  }
   .card{
     width: 100%;
-    padding: 10px;
+    height: 100%;
+    //padding: 10px;
     border-radius: 3px;
     background-color: $color-white;
     box-shadow: $shadow;
@@ -21,24 +42,35 @@
           flex: 3;
           background-image: linear-gradient(to bottom right,
            #68b7f9, #aff7c9);
+
         }
         &__profile{
           height: 128px;
           width: 100%;
           position: absolute;
-          margin-left: 10px;
-          top: 270px;
+          top: 210px;
+          transform: translate(0, 50%);
           display: flex;
-          justify-content: end;
-          align-items: end;
+          @media (max-width: 700px){
+            top: 100px;
+          }
+          &-container{
+            flex:1;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+          }
           &-picture{
             height: 100%;
             width: 128px;
-            background-color: $color-grey-light-1;
+            transform: translate(50%, 0);
+            background-image: url("images/gintoki.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             box-shadow: $shadow;
-
             border-radius: 50%;
-            margin-right: 330px;
             border: 5px solid $color-white;
           }
           &-buttons{
@@ -47,8 +79,11 @@
             align-items: center;
             text-align: center;
             justify-content: space-around;
+            @media (max-width: 700px){
+              display: none;
+            }
             &-button{
-              background-color: #946de1;
+              box-shadow: $shadow;
               border-radius: 50%;
               width: 50px;
               height: 50px;
@@ -58,6 +93,15 @@
               justify-content: center;
               color: $color-white;
 
+              &--1{
+                background-color: #03A9F4;
+              }
+              &--2{
+                background-color: $color-primary-dark;
+              }
+              &--3{
+                background-color: #607D8B;
+              }
             }
           }
         }
@@ -69,6 +113,13 @@
           display: flex;
           text-align: center;
           align-items: center;
+          @media (max-width: 700px){
+            flex: 2;
+            flex-direction: column;
+            margin-top: 20px;
+            align-items: stretch;
+            justify-content: center;
+          }
           &-link{
             &:first-child{
               color: $color-black;
@@ -76,19 +127,18 @@
             }
             color: #d3d5db;
             flex: 1;
+            border-radius: 3px;
+            display: block;
+            transition: all 0.3s;
+
+            &:hover{
+              background-color: $color-grey-light-1;
+            }
           }
         }
       }
     }
-    &--intro{
-      height: 350px;
-    }
-    &--timeline{
-      height: 800px;
-    }
-    &--photos{
-      height: 350px;;
-    }
+
   }
 
 

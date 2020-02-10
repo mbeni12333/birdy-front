@@ -10,16 +10,20 @@ const Wall = () => {
 
             </div>
             <div className="wall__profile">
-              <div className="wall__profile-picture"></div>
-              <div className="wall__profile-buttons">
-                <div className="wall__profile-buttons-button">
-                  <i class="fas fa-plus-circle"></i>
-                </div>
-                <div className="wall__profile-buttons-button">
-                  <i class="far fa-comments"></i>
-                </div>
-                <div className="wall__profile-buttons-button">
-                  <i class="fas fa-cogs"></i>
+              <div className="wall__profile-container">
+                  <div className="wall__profile-picture"></div>
+              </div>
+              <div className="wall__profile-container">
+                <div className="wall__profile-buttons">
+                  <div className="wall__profile-buttons-button wall__profile-buttons-button--1">
+                    <i className="fas fa-plus-circle"></i>
+                  </div>
+                  <div className="wall__profile-buttons-button wall__profile-buttons-button--2">
+                    <i className="far fa-comments"></i>
+                  </div>
+                  <div className="wall__profile-buttons-button wall__profile-buttons-button--3">
+                    <i className="fas fa-cogs"></i>
+                  </div>
                 </div>
               </div>
             </div>

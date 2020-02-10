@@ -6,8 +6,116 @@
   padding-right: 64px;
   display: flex;
   flex-direction: column;
+  @media (max-width:700px){
+    padding: 0;
+  }
   &__body{
     width: 100%;
     display: flex;
   }
+}
+
+.post-container{
+  margin-bottom: 10px;
+
+}
+
+.post{
+  display: flex;
+  &__aside{
+    flex: 1;
+    min-width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 3px;
+    padding-right:3px;
+    padding-bottom: 20px;
+    &-element{
+      &--picture{
+        height: 44px;
+        width: 100%;
+        border-radius: 50%;
+        background-image: url("images/gintoki.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+      }
+      &--bar{
+        flex:1;
+        border-left: 3px solid $color-grey-light-1;
+        align-self: center;
+      }
+      &--icon{
+        height: 26px;
+        font-size: 14px;
+        color: $color-grey-dark;
+      }
+    }
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+
+    &-header{
+      padding-left: 10px;
+      height: 26px;
+      font-size: 14px;
+    }
+    &-person{
+      display: flex;
+      color: $color-black;
+      padding-left: 10px;
+      align-items: center;
+      & > *:not(:last-child){
+        margin-right: 5px;
+      }
+
+      &-name{
+
+      }
+      &-link{
+
+        font-size: 14px;
+        color: $color-grey-dark;
+      }
+      &-time{
+        color: $color-grey-dark;
+        font-size: 14px;
+      }
+
+    }
+    &-body{
+      line-height: 22px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      &__text{
+
+      }
+      &__photo{
+        margin-top: 10px;
+        min-height: 150px;
+
+
+        img{
+          width: 100%;
+          border: 1px solid $color-grey-dark;
+          border-radius: 20px;
+        }
+        &:hover{
+          background-color: $color-grey-light-1;
+        }
+      }
+    }
+    &-footer{
+      display: flex;
+      padding: 10px;
+      justify-content: space-between;
+    }
+  }
+
 }
