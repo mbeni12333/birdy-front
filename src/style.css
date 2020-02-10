@@ -337,7 +337,8 @@ body {
     .post__content-footer {
       display: flex;
       padding: 10px;
-      justify-content: space-between; }
+      justify-content: space-between;
+      color: #777; }
 
 .card-container {
   padding: 10px;
