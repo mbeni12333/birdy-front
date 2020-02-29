@@ -2,26 +2,25 @@
   background-color: $color-grey-light-1;
 }
 .content{
-  padding-left: 64px;
-  padding-right: 64px;
+  //padding-left: 64px;
+  //padding-right: 64px;
   display: flex;
   flex-direction: column;
-  @media (max-width:700px){
-    padding: 0;
-  }
   &__body{
-    width: 100%;
     display: flex;
+    justify-content: center;
   }
 }
 
 .post-container{
   margin-bottom: 10px;
-
+  display: flex;
+  //justify-content: space-around;
 }
 
 .post{
   display: flex;
+  min-width: 300px;
   &__aside{
     flex: 1;
     min-width: 50px;
@@ -98,8 +97,7 @@
       }
       &__photo{
         margin-top: 10px;
-        min-height: 150px;
-
+        max-width: 650px;
 
         img{
           width: 100%;

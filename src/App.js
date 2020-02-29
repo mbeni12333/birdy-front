@@ -13,8 +13,8 @@ function App() {
       <Header />
       <div className="main_container">
           <Navigation />
-          <Chat />
           <Main />
+          <Chat />
       </div>
     </div>
   );
