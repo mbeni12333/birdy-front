@@ -6,44 +6,113 @@
   //padding-right: 64px;
   display: flex;
   flex-direction: column;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__head{
+    max-width: 1500px;
+  }
   &__body{
     display: flex;
-    justify-content: center;
+    //justify-content: center;
+    justify-content: space-around;
+    max-width: 1500px;
+
+    &-aside{
+      position: sticky;
+      top:0;
+      display: flex;
+      flex-direction: column;
+    }
+
   }
 }
 
 .post-container{
   margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
   //justify-content: space-around;
 }
 
 .post{
   display: flex;
   min-width: 300px;
+  max-width: 500px;
+  &__reply{
+    width: 100%;
+    //background-color: red;
+    display: flex;
+    align-items: center;
+    &-user{
+      width: 50px;
+      height: 50px;
+      background-color: $color-grey-light-2;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    &-input{
+      flex: 1;
+      //background-color: green;
+      display: flex;
+
+      input{
+        background-color: $color-grey-light-1;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+        //resize: none;
+        flex: 1;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        padding:10px;
+      }
+      button{
+        border: none;
+        border-radius: 3px;
+        width: 50px;
+        background-color: $color-primary-light;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+      }
+    }
+  }
   &__aside{
     flex: 1;
-    min-width: 50px;
+    max-width: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding-left: 3px;
     padding-right:3px;
     padding-bottom: 20px;
+    //background-color: red;
     &-element{
+
       &--picture{
+        margin-bottom: 5px;
         height: 44px;
-        width: 100%;
+        width: 44px;
         border-radius: 50%;
-        background-image: url("images/gintoki.jpg");
-        background-size: cover;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        //background-image: url("images/gintoki.jpg");
+        /*background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat;*/
+
+        img{
+          height: 100%;
+          width: 100%;
+          object-position:0 0px;
+          object-fit: cover;
+        }
 
       }
       &--bar{
         flex:1;
-        border-left: 3px solid $color-grey-light-1;
+        border-left: 3px dashed $color-grey-dark;
         align-self: center;
       }
       &--icon{
@@ -65,7 +134,7 @@
     &-person{
       display: flex;
       color: $color-black;
-      padding-left: 10px;
+      padding:5px 10px;
       align-items: center;
       & > *:not(:last-child){
         margin-right: 5px;
@@ -75,9 +144,9 @@
 
       }
       &-link{
-
         font-size: 14px;
         color: $color-grey-dark;
+        color: #03A9F4;
       }
       &-time{
         color: $color-grey-dark;
@@ -87,22 +156,32 @@
     }
     &-body{
       line-height: 22px;
-      padding: 10px;
+      padding:0 10px;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
+      //align-items: stretch;
 
       &__text{
 
       }
       &__photo{
         margin-top: 10px;
-        max-width: 650px;
-
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        //grid-template-rows: 1fr 1fr;
+        border: 2px solid $color-grey-light-1;
+        grid-gap: 3px;
+        border-radius: 20px;
+        overflow: hidden;
         img{
+          //flex: 1;
+          object-fit: cover;
+          height: 100%;
           width: 100%;
-          border: 1px solid $color-grey-dark;
-          border-radius: 20px;
+          //border: 1px solid $color-grey-dark;
+          //border-radius: 20px;
         }
         &:hover{
           background-color: $color-grey-light-1;
@@ -114,6 +193,68 @@
       padding: 10px;
       justify-content: space-between;
       color: $color-grey-dark;
+
+      .post__footer-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        flex:1;
+        transition: all .1s ease-in-out;
+        &:hover{
+          //background-color: $color-grey-light-1;
+          cursor: pointer;
+          .post__footer-button-icon{
+            &--heart{
+              background-color: #F8BBD0;
+
+              & + .post__footer-button-label{
+                color: #E91E63;
+              }
+            }
+            &--comment{
+              background-color: rgba(#CDDC39, .5);
+              & + .post__footer-button-label{
+                color: #8BC34A;
+              }
+            }
+            &--share{
+              //color: red;
+              background-color: rgba(#B3E5FC, .5);
+              & + .post__footer-button-label{
+                color: #03A9F4;
+              }
+            }
+
+          }
+        }
+        &-label{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &-icon{
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
+          margin-right: 3px;
+          //background-color: orange;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all .2s ease-in-out;
+          &--heart{
+            color: #E91E63;
+          }
+          &--comment{
+            color: #8BC34A;
+          }
+          &--share{
+            color: #03A9F4;
+          }
+        }
+      }
+
     }
   }
 

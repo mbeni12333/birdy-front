@@ -1,20 +1,15 @@
-.root{
-  background-color: $color-grey-light-1;
-}
-.App{
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
 .header{
   height: 64px;
   //width: 100%;
   //z-index: 1;
   //position: fixed;
   //top: 0;
+  @media (max-width: 1300px){
+
+    &__logo{
+      width: 64px;
+    }
+  }
 }
 
 .main_container{
@@ -23,13 +18,16 @@
   //@include clearfix;
   flex:1;
   display: flex;
-  @media (max-width: 700px){
+  overflow-y: hidden;
+
+
+  @media (max-width: 1000px){
     flex-direction: column;
     align-items: stretch;
   }
-  overflow-y: hidden;
 
-  .main{
+
+  main{
     //padding-top: 30px;
     //padding-bottom: 30px;
     //width: 100%;
@@ -37,26 +35,97 @@
     //margin-left: auto;
     //margin-right: auto;
     flex:1;
-    overflow-y: scroll;
+    height: 100%;
+
+    overflow-y: hidden;
     overflow-x: hidden;
-    //float: left;
+
+    .main{
+      overflow-y: scroll;
+      height: 100%;
+      padding: 10px;
+    }
   }
 
   .nav{
   //position: fixed;
+    width: 250px;
 
+    @media (max-width: 1000px){
+
+      &__elements{
+        flex-direction: row;
+        width: 100% !important;
+      }
+    }
+    @media (max-width: 1300px){
+      width: 64px;
+
+
+      &__elements{
+        width: 64px;
+        overflow: hidden;
+      }
+      &__element{
+        //padding: 10px 10px;
+        &-label{
+          display: none;
+        }
+        &-icon{
+          flex:1;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
     &--left{
       //float: left;
-      width: 64px;
+      //width: 300px;
       height: 100%;
-      @media (max-width: 700px){
+
+      @media (max-width: 1300px){
+
+      }
+      @media (max-width: 1000px){
         width: 100%;
         height: 64px;
       }
     }
     &--right{
       //right: 0;
-      width: 64px;
+      @media (max-width: 1500px){
+          width: 64px;
+
+          .nav__button{
+            .nav__element-label{
+              display: none;
+            }
+          }
+          .nav__elements{
+            width: 64px;
+            overflow: hidden;
+
+            .nav__element{
+              padding: 10px 10px;
+              &-label{
+                display: none;
+              }
+              &-icon{
+                flex:1;
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+      }
+      @media (max-width: 1300px){
+
+      }
+      @media (max-width: 1000px){
+        width: 100%;
+      }
+      height: 100%;
+      //width: 64px;
     }
   }
 }

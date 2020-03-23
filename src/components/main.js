@@ -1,22 +1,21 @@
 import React from 'react';
-import Wall from './wall.js';
-import Timeline from './timeline.js';
-import Photos from './photos.js';
-import Intro from './intro.js';
+import Profile from './profile.js';
+
+import {Route, Link, Switch} from 'react-router-dom';
+import Chat from './Chat.js';
+
 
 const Main = () => {
   return(
-    <main className="main">
-      <div className="content">
-        <div className="content__head">
-          <Wall />
-        </div>
-        <div className="content__body">
-          <Intro/>
-          <Timeline/>
-          <Photos/>
-        </div>
-      </div>
+    <main>
+      <Switch>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/chat">
+          <Chat />
+        </Route>
+      </Switch>
     </main>
   )
 }

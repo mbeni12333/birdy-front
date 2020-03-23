@@ -6,8 +6,11 @@
     &::after{
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0;
+
     }
   }
+
+
   &,
   &:link,
   &:visited{
@@ -15,33 +18,35 @@
     text-decoration: none;
     padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 10rem;
-    transition: all 0.2s;
+    border-radius: .3rem;
+    border: none;
+    transition: all .3s ease-in-out;
     position: relative;
     font-size: $default-font-size;
   }
   &:active{
     transform: translateY(-0.1rem);
     box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+
   }
   &::after{
     content: "";
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 10rem;
+    border-radius: .2rem;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-    transition: all .4s;
+    transition: all 0.4s ease-in-out;
   }
   &::before{
 
   }
   &--white{
     background-color: $color-white;
-    color: $color-grey-dark;
+    color: $color-primary;
 
     &::after{
       background-color: $color-white;

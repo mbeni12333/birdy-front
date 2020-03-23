@@ -1,0 +1,96 @@
+.field{
+
+  height: 64px;
+  width: 100%;
+  border-radius: 3px;
+  position: relative;
+  background-color: rgba(255,255,255, .3);
+  transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out;
+
+  &:hover{
+    background-color: rgba(255,255,255, .45);
+    box-shadow: 0 4px 20px 0 rgba($color-black, 0.05);
+  }
+
+
+  &.active{
+    background-color: $color-white;
+
+    input{
+      padding: 24px 16px 8px 16px;
+      &::-webkit-input-placeholder{
+        opacity: 0;
+      }
+      &::-moz-placeholder{
+        //transition: 1s transform ease-in-out;
+        opacity: 0;
+      }
+    }
+
+    input + label{
+      top: 4px;
+      opacity: 1;
+      //color: $color-primary;
+      background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
+  &.locked{
+    pointer-events: none;
+  }
+  input{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    color: #282828;
+    outline: none;
+    box-shadow: 0 4px 20px 0 transparent;
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
+      0.1s padding ease-in-out;
+
+    &::-webkit-input-placeholder{
+      color: rgba($color-black, .6);
+    }
+    &::-moz-placeholder {
+      color: rgba($color-black, .6);
+      //transition: 1s transform ease-in-out;
+    }
+  }
+
+  input + label{
+    position: absolute;
+    top: 24px;
+    left: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.1s all ease-in-out;
+  }
+  /*height: 64px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: rgba(255,255,255, .4);
+  border: none;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+  transition: all .2s;
+  &:hover{
+    background-color: rgba(255,255,255, .7);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  }
+  &:focus{
+    background-color: $color-white;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.2);
+  }*/
+}

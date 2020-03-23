@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1">
+  <defs>
+    <path id="basePath" d="M 50 550 Q 247 495 102 377 Q 15 280 183 225 Q 294 188 365 261 Q 411 332 338 353 Q 258 388 223 314 Q 160 123 359 98 Q 544 70 667 165 L 739 251" />
+
+  </defs>
+
+  <use xlink:href="#basePath" stroke-width="2" stroke-dasharray="10"
+       stroke="grey" fill="none" mask="url(#mask)"/>
+  <path d="M 27,3 H 21 L 13,15 H 9 L 12,3 H 5 L 3,7 H -1 L 1,0 -1,-7 H 3 L 5,-3 H 12 L 9,-15 H 13 L 21,-3 H 27 C 33,-3 33,3 27,3 Z"
+       fill="white" stroke="black" stroke-width="1.5">
+    <animateMotion rotate="auto" begin="0s" dur="5s" fill="freeze">
+      <mpath xlink:href="#basePath"/>
+    </animateMotion>
+  </path>
+</svg>

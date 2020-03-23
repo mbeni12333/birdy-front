@@ -14,3 +14,14 @@ body{
     background-color: $color-grey-light-1;
   box-sizing: border-box;
 }
+
+.root{
+  background-color: $color-grey-light-1;
+}
+.App{
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
