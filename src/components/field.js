@@ -10,7 +10,9 @@ class Field extends React.Component{
         active: (props.locked && props.active) || false,
         value: props.value || "",
         error: props.error || "",
-        label: props.label || "Label"
+        label: props.label || "Label",
+        name: props.name || props.label || "input",
+        type: props.type || "texte"
       };
   }
 
@@ -43,7 +45,8 @@ class Field extends React.Component{
         <input
           className="login-form__input"
           id={1}
-          type="text"
+          type={this.state.type}
+          name={this.state.name}
           placeholder={label}
           onChange={this.changeValue.bind(this)}
           onKeyPress={this.handleKeyPress.bind(this)}

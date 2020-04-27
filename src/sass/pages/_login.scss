@@ -176,6 +176,14 @@
             color: $color-white;
             margin-bottom: 40px;
           }
+          &__name{
+            display: flex;
+            justify-content: space-between;
+
+            & > :First-child{
+              margin-right: 10px;
+            }
+          }
           .field{
             margin-bottom: 20px;
           }
@@ -188,7 +196,7 @@
           &__links{
             font-size: 18px;
             display: flex;
-            justify-content: space-between;  
+            justify-content: space-between;
           }
 
         }

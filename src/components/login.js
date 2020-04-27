@@ -1,22 +1,28 @@
 import React from 'react';
 
 import Field from './field.js';
+import {Route, Switch, Link} from 'react-router-dom';
+
+
+import LoginForm from '../forms/loginForm.js';
+import SignUpForm from '../forms/signupForm.js';
 
 const Login = () => {
+
   return (
     <div className="login">
       <div className="login__header">
 
       </div>
       <div className="login__content">
-        <section class="login__content-panel login__content-panel--1">
+        <section className="login__content-panel login__content-panel--1">
           <div className="logobox">
             <i className="fas fa-rocket"></i>
             <h3>Birdy-app</h3>
           </div>
           <div className="login__content-panel-card login__content-panel-card--1">
-            <div class="presentation">
-              <h1 class="presentation__title">
+            <div className="presentation">
+              <h1 className="presentation__title">
                 Birdy
               </h1>
               <p className="presentation__description">
@@ -24,24 +30,24 @@ const Login = () => {
               </p>
 
               <ul className="presentation__features">
-                <li class="presentation__features-feature-box">
-                    <i class="presentation__features-feature-box__icon fas fa-rocket"></i>
-                    <h3 class="heading-tertiary">Straight Forwad social network</h3>
-                    <p class="presentation__features-feature-box__text">
+                <li className="presentation__features-feature-box">
+                    <i className="presentation__features-feature-box__icon fas fa-rocket"></i>
+                    <h3 className="heading-tertiary">Straight Forwad social network</h3>
+                    <p className="presentation__features-feature-box__text">
                       Lorem ipsum dolor
                     </p>
                 </li>
-                <li class="presentation__features-feature-box">
-                    <i class="presentation__features-feature-box__icon fas fa-comment"></i>
-                    <h3 class="heading-tertiary">Real time groupchat</h3>
-                    <p class="presentation__features-feature-box__text">
+                <li className="presentation__features-feature-box">
+                    <i className="presentation__features-feature-box__icon fas fa-comment"></i>
+                    <h3 className="heading-tertiary">Real time groupchat</h3>
+                    <p className="presentation__features-feature-box__text">
                       Lorem ipsum dolor
                     </p>
                 </li>
-                <li class="presentation__features-feature-box">
-                    <i class="presentation__features-feature-box__icon fas fa-chalkboard-teacher"></i>
-                    <h3 class="heading-tertiary">Real time WhiteBoard</h3>
-                    <p class="presentation__features-feature-box__text">
+                <li className="presentation__features-feature-box">
+                    <i className="presentation__features-feature-box__icon fas fa-chalkboard-teacher"></i>
+                    <h3 className="heading-tertiary">Real time WhiteBoard</h3>
+                    <p className="presentation__features-feature-box__text">
                       Lorem ipsum dolor
                     </p>
                 </li>
@@ -50,29 +56,12 @@ const Login = () => {
           </div>
         </section>
         <section className="login__content-panel login__content-panel--2">
-          <div className="login__content-panel-card">
-            <form className="login-form">
-              <h1 className="login-form__title">Log In</h1>
-              <Field
-                id={1}
-                label="Email adress"
-                locked={false}
-                active={false}
-              />
-              <Field
-                id={1}
-                label="Password"
-                locked={false}
-                active={false}
-              />
-
-              <button className="login-form__button btn btn--white">Log In</button>
-              <div class="login-form__links">
-                <span>Need an account? <b>Sign Up</b></span>
-                <span>Forgot password? <b>Recover</b></span>
-              </div>
-            </form>
-          </div>
+            <div className="login__content-panel-card">
+              <Switch>
+                <Route exact path="/login" component={LoginForm}/>
+                <Route exact path="/login/signup" component={SignUpForm}/>
+              </Switch>
+            </div>
         </section>
       </div>
 
