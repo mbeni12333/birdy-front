@@ -306,8 +306,7 @@ body {
       align-self: center; }
   .header__user {
     flex: 1;
-    display: flex;
-    margin-right: 300px; }
+    display: flex; }
     .header__user .header__icons {
       flex: 1;
       display: flex;
