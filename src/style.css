@@ -10,7 +10,8 @@ html {
 
 body {
   background-color: #f4f4f4;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 .root {
   background-color: #f4f4f4; }
@@ -991,6 +992,7 @@ body {
     overflow-x: hidden; }
     .main_container main .main {
       overflow-y: scroll;
+      overflow-x: hidden;
       height: 100%;
       padding: 10px; }
       @media (max-width: 1000px) {
@@ -1067,6 +1069,7 @@ body {
             order: 2; } }
     .login__content-panel {
       padding: 10px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;

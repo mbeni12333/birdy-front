@@ -12,7 +12,8 @@ html{
 
 body{
     background-color: $color-grey-light-1;
-  box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .root{
