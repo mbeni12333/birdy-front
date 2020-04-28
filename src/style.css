@@ -6,7 +6,7 @@
   box-sizing: inherit; }
 
 html {
-  font-size: 62%; }
+  font-size: 60%; }
 
 body {
   background-color: #f4f4f4;
@@ -482,7 +482,6 @@ body {
         overflow: hidden; }
         .post__content-body__photo img {
           object-fit: cover;
-          height: 100%;
           width: 100%; }
         .post__content-body__photo:hover {
           background-color: #f4f4f4; }
@@ -1079,7 +1078,7 @@ body {
         background-image: url("images/animation.svg");
         background-repeat: no-repeat;
         background-position: -50px -100px;
-        flex: 2; }
+        flex: 1; }
         .login__content-panel--1 .logobox {
           position: absolute;
           display: flex;
@@ -1157,7 +1156,7 @@ body {
               flex: 1;
               background-color: rgba(255, 255, 255, 0.1);
               font-size: 1.5rem;
-              padding: 2.5rem;
+              padding: 2rem 1rem;
               border-radius: 3px;
               text-align: center;
               box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);

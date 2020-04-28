@@ -55,7 +55,7 @@
         background-image: url("images/animation.svg");
         background-repeat: no-repeat;
         background-position: -50px -100px;
-        flex:2;
+        flex:1;
         .logobox{
           position: absolute;
           display: flex;
@@ -158,7 +158,7 @@
 
               background-color: rgba($color-white, .1);
               font-size: 1.5rem;
-              padding: 2.5rem;
+              padding: 2rem 1rem;
               border-radius: 3px;
               text-align: center;
               box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
