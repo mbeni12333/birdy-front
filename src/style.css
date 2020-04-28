@@ -1037,7 +1037,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column; }
-  @media (max-width: 1000px) {
+  @media (max-width: 1050px) {
     .login {
       overflow-y: scroll; } }
   .login__header {
@@ -1049,18 +1049,15 @@ body {
     width: 100%;
     flex: 1;
     display: flex; }
-    @media (max-width: 1000px) {
+    @media (max-width: 1050px) {
       .login__content {
         flex-direction: column; }
         .login__content-panel {
-          height: 100vh; }
+          min-height: 100vh; }
           .login__content-panel--1 {
-            order: 2; }
-          .login__content-panel--2 {
-            min-height: 80vh; } }
+            order: 2; } }
     .login__content-panel {
       padding: 10px;
-      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1069,7 +1066,8 @@ body {
         background-color: #404158;
         background-image: url("images/animation.svg");
         background-repeat: no-repeat;
-        background-position: -50px -100px; }
+        background-position: -50px -100px;
+        flex: 2; }
         .login__content-panel--1 .logobox {
           position: absolute;
           display: flex;
@@ -1086,22 +1084,36 @@ body {
           .login__content-panel--1 .logobox h3 {
             color: #fff; }
       .login__content-panel--2 {
-        background-image: linear-gradient(to right, #ffb900, #ff7730); }
+        background-image: linear-gradient(to right, #ffb900, #ff7730);
+        min-width: 350px; }
+        @media (min-width: 1050px) {
+          .login__content-panel--2 {
+            flex: 1; } }
       .login__content-panel-card {
         flex: 1;
         max-width: 500px; }
         .login__content-panel-card--1 {
-          max-width: 80%; }
+          max-width: 80%;
+          padding-top: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center; }
+          @media (max-width: 1050px) {
+            .login__content-panel-card--1 {
+              padding-left: 10px;
+              padding-right: 10px;
+              max-width: 100%; } }
         .login__content-panel-card .presentation {
           color: #fff;
           text-align: center;
           display: flex;
           flex-direction: column;
-          justify-content: space-around; }
+          justify-content: space-around;
+          max-width: 600px; }
           .login__content-panel-card .presentation__title {
-            font-size: 64px;
+            font-size: 6rem;
             position: relative;
-            margin-bottom: 50px; }
+            margin-bottom: 5rem; }
             .login__content-panel-card .presentation__title::after {
               content: "";
               width: 15%;
@@ -1123,12 +1135,12 @@ body {
             list-style: none; }
             .login__content-panel-card .presentation__features > :not(:last-child) {
               margin-right: 10px; }
-            @media (max-width: 1000px) {
+            @media (max-width: 1050px) {
               .login__content-panel-card .presentation__features {
                 flex-direction: column; }
                 .login__content-panel-card .presentation__features > :not(:last-child) {
                   margin-right: 0;
-                  margin-bottom: 10px; } }
+                  margin-bottom: 20px; } }
             .login__content-panel-card .presentation__features-feature-box {
               flex: 1;
               background-color: rgba(255, 255, 255, 0.1);
@@ -1171,9 +1183,17 @@ body {
             height: 64px;
             font-weight: 600; }
           .login__content-panel-card .login-form__links {
-            font-size: 18px;
+            font-size: 1.8rem;
             display: flex;
             justify-content: space-between; }
+            .login__content-panel-card .login-form__links span {
+              flex: 1; }
+            .login__content-panel-card .login-form__links a {
+              color: white;
+              text-decoration: none;
+              font-weight: 600; }
+              .login__content-panel-card .login-form__links a:focus {
+                outline: none; }
   .login__footer {
     color: #777;
     background-color: #404158;

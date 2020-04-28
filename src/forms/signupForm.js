@@ -10,7 +10,9 @@ class SignUpForm extends React.Component{
   signup = (e) => {
     e.preventDefault();
     const data = formDataToJSON(e.target);
-    
+    /*SHITTY WAY TO DO it */
+    data.birthday = data.birthday.replace(/-/g, "/");
+
     API.signup(data, () => {
 
     });
@@ -27,6 +29,7 @@ class SignUpForm extends React.Component{
             locked={false}
             active={false}
             name="firstname"
+            required={true}
           />
           <Field
             id={1}
@@ -34,6 +37,7 @@ class SignUpForm extends React.Component{
             locked={false}
             active={false}
             name="lastname"
+            required={true}
           />
         </div>
         <Field
@@ -42,6 +46,7 @@ class SignUpForm extends React.Component{
           locked={false}
           active={false}
           name="username"
+          required={true}
         />
         <Field
           id={1}
@@ -50,6 +55,7 @@ class SignUpForm extends React.Component{
           active={false}
           name="password"
           type="password"
+          required={true}
         />
         <Field
           id={1}
@@ -57,6 +63,7 @@ class SignUpForm extends React.Component{
           locked={false}
           active={false}
           name="email"
+          required={true}
         />
 
         <Field
@@ -65,12 +72,13 @@ class SignUpForm extends React.Component{
           locked={false}
           active={false}
           name="birthday"
+          type="date"
+          required={true}
         />
         <button
         className="login-form__button btn btn--white">Sign Up</button>
         <div className="login-form__links">
-          <span>Have an account? <Link to="/login"><b>Log in</b></Link></span>
-          <span>Forgot password? <b>Recover</b></span>
+          <span>Have an account? <br/><Link to="/login"><b>Log in</b></Link></span>
         </div>
       </form>
     );

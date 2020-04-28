@@ -21,6 +21,9 @@ import './css/all.css';
 
 
 
+
+
+
 const AuthRoute = ({component:Component, ...rest}) => {
   return(
     <Route {...rest} render={(props) => (

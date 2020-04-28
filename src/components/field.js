@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import {UID} from 'react-uid';
 //import { TransitionMotion, spring } from "react-motion";
 
 class Field extends React.Component{
@@ -12,7 +13,8 @@ class Field extends React.Component{
         error: props.error || "",
         label: props.label || "Label",
         name: props.name || props.label || "input",
-        type: props.type || "texte"
+        type: props.type || "texte",
+        required: props.required || false
       };
   }
 
@@ -36,27 +38,33 @@ class Field extends React.Component{
 
 
     return (
-      <div className={fieldClassName}>
-      {active &&
-          value &&
-          predicted &&
-          predicted.includes(value) && <p className="predicted">{predicted}</p>}
+      <UID>
+        { id =>
+          <div className={fieldClassName}>
+          {active &&
+              value &&
+              predicted &&
+              predicted.includes(value) && <p className="predicted">{predicted}</p>}
 
-        <input
-          className="login-form__input"
-          id={1}
-          type={this.state.type}
-          name={this.state.name}
-          placeholder={label}
-          onChange={this.changeValue.bind(this)}
-          onKeyPress={this.handleKeyPress.bind(this)}
-          onFocus= {() => !locked && this.setState({active: true})}
-          onBlur={() => !locked && this.setState({active: false})}
-        />
-        <label htmlFor={1} className={error && "error"}>
-          {error || label}
-        </label>
-      </div>
+            <input
+              className="login-form__input"
+              id={id}
+              type={this.state.type}
+              name={this.state.name}
+              placeholder={this.state.type === "date" ? "YYYY/MM/DD" : label}
+              onChange={this.changeValue.bind(this)}
+              onKeyPress={this.handleKeyPress.bind(this)}
+              onFocus= {() => !locked && this.setState({active: true})}
+              onBlur={() => !locked && this.setState({active: false})}
+              required={this.state.required}
+            />
+            <label htmlFor={id} className={error && "error"}>
+              {error || label}
+            </label>
+          </div>
+        }
+
+      </UID>
     );
   }
 }

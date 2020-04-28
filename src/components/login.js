@@ -11,9 +11,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="login__header">
-
-      </div>
+      
       <div className="login__content">
         <section className="login__content-panel login__content-panel--1">
           <div className="logobox">

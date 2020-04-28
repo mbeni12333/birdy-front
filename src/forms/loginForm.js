@@ -41,10 +41,11 @@ class LoginForm extends React.Component{
         <h1 className="login-form__title">Log In</h1>
         <Field
           id={1}
-          label="Email adress"
+          label="Username"
           locked={false}
           active={false}
           name="username"
+          required={true}
         />
         <Field
           id={1}
@@ -53,14 +54,16 @@ class LoginForm extends React.Component{
           active={false}
           name="password"
           type="password"
+          required={true}
         />
+
 
         <button
         className="login-form__button btn btn--white">Log In</button>
 
         <div className="login-form__links">
-          <span>Need an account? <Link to="/login/signup"><b>Sign Up</b></Link></span>
-          <span>Forgot password? <b>Recover</b></span>
+          <span>Need an account? <br/><Link to="/login/signup"><b>Sign Up</b></Link></span>
+          <span>Forgot password? <br/><Link to="/login/recover"><b>Recover</b></Link></span>
         </div>
       </form>
     );

@@ -1,20 +1,35 @@
 import React from 'react';
 import Profile from './profile.js';
 
-import {Route, Link, Switch} from 'react-router-dom';
+import {Route, Link, Switch, Redirect} from 'react-router-dom';
+import {API} from '../api/birdyapi.js';
 import Chat from './Chat.js';
+
+
+
+const Logout = () => {
+  return(
+    <button className="btn btn--white" onClick={() => {
+      API.logout(() => {
+        return <Redirect to="/" />;
+      });
+    }} style={{
+      position:"absolute",
+      top: "50%",
+      left:"50%",
+      transform:"translate(-50%, -50%)"
+    }}>Logout</button>
+  )
+}
 
 
 const Main = () => {
   return(
-    <main>
+    <main style={{position:"relative"}}>
       <Switch>
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/chat">
-          <Chat />
-        </Route>
+        <Route exact path="/profile" component={Profile} />
+        <Route path="/chat" component={Chat} />
+        <Route exact path="/" component={Logout}/>
       </Switch>
     </main>
   )
