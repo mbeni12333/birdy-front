@@ -24,6 +24,8 @@
   @media (max-width: 1000px){
     flex-direction: column;
     align-items: stretch;
+
+
   }
 
 
@@ -44,6 +46,10 @@
       overflow-y: scroll;
       height: 100%;
       padding: 10px;
+
+      @media(max-width:1000px){
+        padding: 0;
+      }
     }
   }
 

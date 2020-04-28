@@ -4,20 +4,32 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  @media (max-width: 1000px){
+    padding: 0 0 10px 0;
+    
+  }
   &--left{
     position: sticky;
     padding: 0;
     top: 0;
+    @media (max-width:1000px){
+      display: none;
+    }
   }
   &--right{
     position: sticky;
     padding: 0;
     top: 0;
+    @media (max-width:1000px){
+      display: none;
+    }
   }
   &--post{
     padding: 0;
     border-bottom: 1px solid $color-grey-light-1;
+    @media (max-width: 1000px){
+
+    }
   }
   &--intro{
     height: 350px;
@@ -26,9 +38,7 @@
 
     //padding-left: 0;
     //top:0;
-    @media (max-width:1000px){
-      display: none;
-    }
+
   .card{
 
     &--intro{
