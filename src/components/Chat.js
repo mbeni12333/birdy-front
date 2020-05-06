@@ -34,7 +34,7 @@ class Chat extends React.Component{
 
     this.ready = false;
 
-    this.ws = new WebSocket("ws://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
+    this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
 
     this.ws.onopen = (e) => {
       alert("BGHEL CONNECTED");
