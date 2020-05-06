@@ -9,12 +9,12 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "node-sass": "^4.13.1",
-    "react": "^16.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
     "react-dev-utils": "^10.0.0",
-    "react-dom": "^16.12.0",
     "react-id-generator": "^3.0.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
     "react-uid": "^2.2.0"
   },
   "scripts": {

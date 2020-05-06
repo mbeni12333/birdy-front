@@ -37,7 +37,7 @@ class Chat extends React.Component{
     this.ws = new WebSocket("ws://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
 
     this.ws.onopen = (e) => {
-
+      alert("BGHEL CONNECTED");
     }
     this.ws.onmessage = (e) => {
       //alert("BGHEL MESSAGE");

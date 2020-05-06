@@ -43,11 +43,7 @@ const API  = {
 
   logout(callback){
     console.log("Trying to logout");
-    axios.delete("/auth", {
-      params:{
-        "token" : this.token
-      }
-    })
+    axios.delete("/auth")
     .then(res => {
       if(this.isLoggedIn === true){
         //alert("YOU ARE BEING LOGED OUT ");
