@@ -11,12 +11,12 @@ let elements = [
 
 const Navigation = () => {
 
-  const navelement = (element) => {
+  const navelement = (element, index) => {
 
-    var icon_class = "nav__element-icon" + (element.selected == true ? " nav__element-icon--selected" : "");
-    console.log({"icon_class":icon_class, "selected": element.selected});
+    var icon_class = "nav__element-icon" + (element.selected === true ? " nav__element-icon--selected" : "");
+    //console.log({"icon_class":icon_class, "selected": element.selected});
     return(
-      <div className="nav__element">
+      <div className="nav__element" key={index}>
         <div className={icon_class}>
           <i className={element.icon}></i>
         </div>
@@ -28,7 +28,7 @@ const Navigation = () => {
   return(
     <nav className="nav nav--left">
       <div className="nav__elements">
-        {elements.map(element => navelement(element))}
+        {elements.map((element, index) => navelement(element, index))}
       </div>
     </nav>
 

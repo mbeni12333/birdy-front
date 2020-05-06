@@ -11,7 +11,9 @@ const Logout = () => {
   return(
     <button className="btn btn--white" onClick={() => {
       API.logout(() => {
-        return <Redirect to="/" />;
+        //alert("redirecting ....");
+        //return <Redirect to="/login" />;
+        window.location.href = '/login'
       });
     }} style={{
       position:"absolute",

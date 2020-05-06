@@ -39,10 +39,10 @@ const Header = () => {
             <i className="fas fa-user-friends"></i>
           </div>
           <div className="header__icons-block">
-            <i class="fab fa-twitch"></i>
+            <i className="fab fa-twitch"></i>
           </div>
           <div className="header__icons-block">
-            <i class="fas fa-globe-europe"></i>
+            <i className="fas fa-globe-europe"></i>
           </div>
         </div>
         <div className="header__profile">

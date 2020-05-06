@@ -16,9 +16,9 @@ let people = [
 
 const Friends = () => {
 
-  const navelement = (person) => {
+  const navelement = (person, index) => {
     return(
-      <div className="nav__element">
+      <div className="nav__element" key={index}>
         <div className="nav__element-icon">
           <div className="nav__element-user">
             <img src={person.photo}/>
@@ -35,7 +35,7 @@ const Friends = () => {
   return(
     <aside className="nav nav--right">
       <div className="nav__elements">
-        {people.map((person) => navelement(person))}
+        {people.map((person, index) => navelement(person, index))}
       </div>
       <div className="nav__element nav__button">
         <div className="nav__button-icon">

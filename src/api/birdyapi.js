@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
-
+//axios.defaults.baseURL = "http://localhost:8080/birdy";
 const API  = {
 
   isLoggedIn : false,
   token : "",
   userId: "",
+  user:{},
 
   checkLoggedIn(){
     return localStorage.getItem("token") !== null;
@@ -17,12 +18,13 @@ const API  = {
       console.log("request is : " , req);
       axios.post("/auth", req)
       .then(res => {
-        alert(JSON.stringify(res.data));
+        //alert(JSON.stringify(res.data));
         if(res.data.status !== "KO"){
+
           this.isLoggedIn = true;
           this.token = res.data.token;
           localStorage.setItem("token", res.data.token);
-          alert(JSON.stringify(res.data));
+
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token;
           callback(res.data.token);
         }
@@ -47,8 +49,8 @@ const API  = {
       }
     })
     .then(res => {
-      if(this.isLoggedIn){
-        alert("YOU ARE BEING LOGED OUT ");
+      if(this.isLoggedIn === true){
+        //alert("YOU ARE BEING LOGED OUT ");
         localStorage.removeItem("token");
         axios.defaults.headers.common = {};
         this.isLoggedIn = false;
