@@ -1,4 +1,5 @@
 import React from 'react';
+import {API} from '../api/birdyapi.js';
 
 let messages = [
   {"self":true, "photo":"test", "content":"some stuff"},
@@ -33,12 +34,16 @@ class Chat extends React.Component{
     }
 
     this.ready = false;
+    this.ws = API.connectSocket()//new WebSocket("ws://localhost:8080/birdy/chat/10?access_token="+localStorage.getItem("token"));
+    this.initialiseSocket();
+  }
 
-    this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
+  initialiseSocket = () => {
 
     this.ws.onopen = (e) => {
-      alert("BGHEL CONNECTED");
+      console.log("BGHEL CONNECTED");
     }
+
     this.ws.onmessage = (e) => {
       //alert("BGHEL MESSAGE");
       var data = JSON.parse(e.data);
@@ -54,9 +59,18 @@ class Chat extends React.Component{
         });
         this.ready = true;
       }
+
+    }
+
+    this.ws.onclose = (e) => {
+      console.log("User is disconnecting ... trying to reconnect");
+      setTimeout(() => {
+        this.ws = API.connectSocket();
+        this.initialiseSocket();
+      }, 1000);
+
     }
   }
-
   send = (e) => {
     if(e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
@@ -130,8 +144,8 @@ class Chat extends React.Component{
       <div className="chat">
             <div className="messages" ref={this.messageref}>
               {this.state.messages.map( (message, index) => this.message_element(message, index))}
-              <div className="messages_vu" style={{ "padding":"1px", "color":"red", "text-align":"right"}}>
-
+              <div className="messages_vu" style={{ "padding":"1px", "color":"red", "textAlign":"right"}}>
+                vu
               </div>
             </div>
 

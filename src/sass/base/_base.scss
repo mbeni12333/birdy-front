@@ -26,3 +26,10 @@ body{
   display: flex;
   flex-direction: column;
 }
+
+a{
+  &, &:focus, &:active, &:visited{
+    text-decoration: none;
+    outline: 0;
+  }
+}

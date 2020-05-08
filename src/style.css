@@ -23,6 +23,10 @@ body {
   display: flex;
   flex-direction: column; }
 
+a, a:focus, a:active, a:visited {
+  text-decoration: none;
+  outline: 0; }
+
 .u-center-text {
   text-align: center; }
 
