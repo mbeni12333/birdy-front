@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
-axios.defaults.baseURL = "http://localhost:8080/birdy";
+axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
+//axios.defaults.baseURL = "http://localhost:8080/birdy";
 const API  = {
 
   isLoggedIn : false,
@@ -60,7 +60,7 @@ const API  = {
     .catch(err => alert(err));
   },
   connectSocket(){
-    this.ws = new WebSocket("ws://localhost:8080/birdy/chat/10?access_token="+localStorage.getItem("token"));
+    this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
 
     return this.ws;
   }
@@ -69,7 +69,7 @@ const API  = {
 
 const SetAuthorizationToken = (token) => {
   //axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
-  axios.defaults.baseURL = "http://localhost:8080/birdy";
+  axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
   axios.defaults.headers.common['Authorization'] = "Bearer " + token;
 }
 
