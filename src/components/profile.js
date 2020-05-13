@@ -4,6 +4,9 @@ import Timeline from './timeline.js';
 import Photos from './photos.js';
 import Intro from './intro.js';
 import Amis from './amis.js';
+import AddPost from './addpost.js'
+
+
 
 const Profile = () => {
   return(
@@ -14,18 +17,13 @@ const Profile = () => {
         </div>
         <div className="content__body">
           <div className="content__body-aside content_body-aside--left">
-            <div className="card-container card-container--left">
               <Intro/>
               <Amis/>
-            </div>
-          </div>
-
-          <Timeline/>
-
-          <div className="content__body-aside content_body-aside--right">
-            <div className="card-container card-container--left">
               <Photos/>
-            </div>
+          </div>
+          <div className="content__body-main">
+            <AddPost /> 
+            <Timeline/>
           </div>
         </div>
       </div>

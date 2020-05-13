@@ -34,15 +34,21 @@ const Friends = () => {
 
   return(
     <aside className="nav nav--right">
-      <div className="nav__elements">
-        {people.map((person, index) => navelement(person, index))}
-      </div>
-      <div className="nav__element nav__button">
-        <div className="nav__button-icon">
-          <i className="fab fa-twitch"></i>
+      <div className="nav__content">
+        <div className="nav__desc">
+          <p>Contact</p>
+          <span>search</span>
         </div>
-        <div className="nav__element-label nav__element-label--white">
-          <span className="nav__element-label-text">Messages</span>
+        <div className="nav__elements">
+          {people.map((person, index) => navelement(person, index))}
+        </div>
+        <div className="nav__element nav__button">
+          <div className="nav__button-icon">
+            <i className="fab fa-twitch"></i>
+          </div>
+          <div className="nav__element-label nav__element-label--white">
+            <span className="nav__element-label-text">Messages</span>
+          </div>
         </div>
       </div>
     </aside>

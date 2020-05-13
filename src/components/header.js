@@ -34,6 +34,12 @@ const Header = () => {
         </div>
       </div>
       <div className="header__user">
+        <div className="header__profile">
+          <div className="header__profile-icon"></div>
+          <div className="header__profile-label">
+            <h3>Mounib</h3>
+          </div>
+        </div>
         <div className="header__icons">
           <div className="header__icons-block">
             <i className="fas fa-user-friends"></i>
@@ -44,11 +50,7 @@ const Header = () => {
           <div className="header__icons-block">
             <i className="fas fa-globe-europe"></i>
           </div>
-        </div>
-        <div className="header__profile">
-          <div className="header__profile-icon"></div>
-          <div className="header__profile-label">
-            <h3>Mounib</h3>
+          <div className="header__icons-block">
             <i className="fas fa-caret-down"></i>
           </div>
         </div>

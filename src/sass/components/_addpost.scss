@@ -1,0 +1,40 @@
+.addpost__input{
+  display: flex;
+
+
+  .input__btn{
+    flex:1;
+    text-align: left;
+    border-radius: 100px;
+
+
+    background-color: $color-dark-tertiary;
+    outline: none;
+    border: none;
+    padding: 0 15px;
+    color :#8a8d91;
+    transition: all .4s ease-in-out;
+    &:focus{
+
+    }
+    &:hover{
+      cursor: pointer;
+      background-color: #4e4f50;
+    }
+  }
+
+
+  .user-icon{
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 2rem;
+
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

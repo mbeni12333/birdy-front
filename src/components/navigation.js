@@ -45,21 +45,22 @@ class Navigation extends React.Component {
   render(){
     return(
       <nav className="nav nav--left">
-        <div className="nav__elements">
-          {
-              elements.map((element, index) => {
-                //alert("hey index = " + index);
-
-                return(
-                  <Navelement
-                  element={element}
-                  key={index}
-                  index={index}
-                  activate={this.activate}
-                  selected={this.state.currentElement == index} />
-                );
-              })
-          }
+        <div className="nav__content">
+          <div className="nav__elements">
+            {
+                elements.map((element, index) => {
+                  //alert("hey index = " + index);
+                  return(
+                    <Navelement
+                    element={element}
+                    key={index}
+                    index={index}
+                    activate={this.activate}
+                    selected={this.state.currentElement == index} />
+                  );
+                })
+            }
+          </div>
         </div>
       </nav>
     );

@@ -1,26 +1,30 @@
 .main{
-  background-color: $color-grey-light-1;
+  //background-color: $color-grey-light-1; light mode
+  background-color: $color-dark-primary;//dark model
 }
 .content{
   //padding-left: 64px;
   //padding-right: 64px;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
-  max-width: 1500px;
+  max-width: 940px;
   margin-left: auto;
   margin-right: auto;
 
   &__head{
-    max-width: 1500px;
+    max-width: 940px;
   }
   &__body{
     display: flex;
     //justify-content: center;
     justify-content: space-around;
-    max-width: 1500px;
-
+    max-width: 100%;
+    &-main{
+      display: flex;
+      flex-direction: column;
+    }
     &-aside{
-      position: sticky;
       top:0;
       display: flex;
       flex-direction: column;
@@ -39,7 +43,6 @@
 .post{
   display: flex;
   min-width: 300px;
-  max-width: 500px;
   &__reply{
     width: 100%;
     //background-color: red;
@@ -133,7 +136,8 @@
     }
     &-person{
       display: flex;
-      color: $color-black;
+      //color: $color-black;
+      color: $color-white;
       padding:5px 10px;
       align-items: center;
       & > *:not(:last-child){
@@ -184,7 +188,7 @@
           //border-radius: 20px;
         }
         &:hover{
-          background-color: $color-grey-light-1;
+          //background-color: $color-grey-light-1;
         }
       }
     }

@@ -6,34 +6,32 @@
   flex-direction: column;
   @media (max-width: 1000px){
     padding: 0 0 10px 0;
-    
   }
   &--left{
-    position: sticky;
-    padding: 0;
-    top: 0;
+    // position: sticky;
+    // padding: 0;
+    // top: 0;
     @media (max-width:1000px){
       display: none;
     }
   }
   &--right{
-    position: sticky;
-    padding: 0;
-    top: 0;
+    // //position: sticky;
+    // padding: 0;
+    // top: 0;
     @media (max-width:1000px){
       display: none;
     }
   }
   &--post{
     padding: 0;
-    border-bottom: 1px solid $color-grey-light-1;
+    //border-bottom: 1px solid $color-grey-light-1;
     @media (max-width: 1000px){
 
     }
   }
   &--intro{
-    height: 350px;
-    flex: 1;
+    max-height: 350px;
     max-width: 350px;
 
     //padding-left: 0;
@@ -76,7 +74,7 @@
             }
           }
           height: 32px;
-          border-bottom: 2px solid $color-grey-light-1;
+          //border-bottom: 2px solid $color-grey-light-1;
           display: flex;
           align-items: center;
 
@@ -109,14 +107,12 @@
   &--timeline{
 
     //height: 800px;
-    max-width: 650px;
-    min-width: 320px;
-    flex:2;
-    background-color: $color-white;
+    flex:1;
+    //background-color: $color-white;
   }
   &--amis{
     height: 400px;
-    width: 350px;
+    max-width: 350px;
 
     .pelicule{
       flex:1;
@@ -130,7 +126,8 @@
       &-amis{
         height: 100px;
         width: 100px;
-        background-color: $color-grey-light-2;
+        //background-color: $color-grey-light-2; light mode
+        background-color: $color-dark-tertiary;// dark mode
       }
     }
   }
@@ -161,17 +158,20 @@
         border-radius: 3px;
         width: 100px;
         //margin-left: 3px;
-        background-color: $color-grey-light-2;
+        //background-color: $color-grey-light-2; light mode
+        background-color: $color-dark-tertiary;// dark mode
       //  margin: 20px;
       }
     }
   }
   .card{
     width: 100%;
-    height: 100%;
+    //height: 100%;
+    color: $color-white;
     padding: 10px;
     border-radius: 3px;
-    background-color: $color-white;
+    //background-color: $color-white; light mode
+    background-color: $color-dark-secondary;// dark mode
     box-shadow: $shadow;
     position: relative;
 
@@ -213,8 +213,9 @@
 
       transition: all .4s ease-in-out;
       box-shadow: none;
+
       &:hover{
-        background-color: $color-grey-light-1;
+        //background-color: $color-grey-light-1;
         cursor: pointer;
       }
     }
@@ -257,7 +258,8 @@
             background-repeat: no-repeat;
             box-shadow: $shadow;
             border-radius: 50%;
-            border: 5px solid $color-white;
+            //border: 5px solid $color-white; light mode
+            border: 5px solid $color-dark-secondary;
           }
           &-buttons{
             width: 200px;
@@ -310,7 +312,8 @@
           }
           &-link{
             &:first-child{
-              color: $color-black;
+              //color: $color-black;
+              color: $color-white;
               font-weight: bold;
             }
             color: #d3d5db;

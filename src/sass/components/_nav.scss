@@ -1,17 +1,20 @@
 .nav{
   //width: 64px;
   height: 100%;
-  background-color: $color-white;
 
+  //background-color: $color-white; light mode
+  background-color: $color-dark-secondary; // dark mode
+  flex:1;
   text-align: center;
   display: flex;
   flex-direction: column;
   //z-index: 10;
-
+  position: relative;
 
   &--left{
     //box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.3);
-    filter: drop-shadow(1px 0 3px rgba(0, 0, 0, 0.3));
+    //filter: drop-shadow(1px 0 3px rgba(0, 0, 0, 0.3));
+    box-shadow: $shadow;
     @media (max-width:1000px){
       order:2;
       width: 100%;
@@ -25,7 +28,7 @@
     }
   }
   &--right{
-    box-shadow: $shadow;
+    //box-shadow: $shadow;
 
     @media (max-width:1000px){
       display: none;
@@ -49,11 +52,25 @@
     }
 
   }
+  &__content{
+    height: calc(100vh - 60px);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:60px;
+  }
 
+  &__desc{
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
   &__elements{
     display: flex;
     flex: 1;
-    overflow-y: scroll;
+    //overflow-y: scroll;
     flex-direction: column;
   }
   &__element{
@@ -63,7 +80,8 @@
     padding:5px 10px;
 
     &:hover{
-      background-color: $color-grey-light-1;
+      //background-color: $color-grey-light-1; light mode
+      background-color: $color-dark-tertiary;// dark mode
       transition: all .2s ease-in-out;
       cursor: pointer;
 
@@ -84,7 +102,8 @@
       flex:1;
       padding: 10px;
       font-size: 1.8rem;
-      color: $color-grey-dark;
+      //color: $color-grey-dark; light mode
+      color: $color-white;
       align-items: center;
       //background-color: red;
       &--white{

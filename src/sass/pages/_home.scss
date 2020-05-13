@@ -38,12 +38,12 @@
     //margin-right: auto;
     flex:1;
     height: 100%;
-
+    margin-top: 64px;
     overflow-y: hidden;
     overflow-x: hidden;
 
     .main{
-      overflow-y: scroll;
+      //overflow-y: scroll;
       overflow-x: hidden;
       height: 100%;
       padding: 10px;
@@ -56,7 +56,7 @@
 
   .nav{
   //position: fixed;
-    width: 250px;
+    max-width: 320px;
 
     @media (max-width: 1000px){
 

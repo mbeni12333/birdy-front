@@ -14,6 +14,7 @@ body{
     background-color: $color-grey-light-1;
     box-sizing: border-box;
     overflow-x: hidden;
+    color: $color-white;
 }
 
 .root{
@@ -21,7 +22,8 @@ body{
 }
 .App{
   width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
+  //height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;

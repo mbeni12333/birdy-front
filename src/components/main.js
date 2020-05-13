@@ -27,7 +27,7 @@ const Logout = () => {
 
 const Main = () => {
   return(
-    <main style={{position:"relative"}}>
+    <main>
       <Switch>
         <Route exact path="/profile" component={Profile} />
         <Route path="/chat" component={Chat} />
