@@ -250,6 +250,9 @@ a, a:focus, a:active, a:visited {
     flex-direction: column;
     position: fixed;
     top: 60px; }
+    @media (max-width: 1300px) {
+      .nav__content {
+        width: 64px; } }
   .nav__desc {
     display: flex;
     font-size: 2rem;

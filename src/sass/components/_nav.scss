@@ -81,7 +81,12 @@
   &__content{
     background-color: $color-dark-secondary; // dark mode
     height: calc(100vh - 60px);
+
     width: 320px;
+
+    @media (max-width: 1300px){
+      width: 64px;
+    }
     display: flex;
     flex-direction: column;
     position: fixed;
