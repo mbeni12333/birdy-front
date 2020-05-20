@@ -5,6 +5,9 @@ import Friends from './components/Friends.js';
 import Navigation from './components/navigation.js';
 import {API} from './api/birdyapi.js';
 
+import {connect} from 'react-redux'
+
+
 import {
   BrowserRouter as Router,
   Link,
@@ -67,4 +70,4 @@ function App() {
 
 
 
-export default App;
+export default connect()(App);

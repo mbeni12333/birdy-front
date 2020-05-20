@@ -38,6 +38,17 @@
   }
 }
 
+@keyframes slideLeftRight{
+  0%{
+    left:-300px;
+  }
+
+  100%{
+    left:0;
+  }
+}
+
+
 @keyframes animateBorder{
-  
+
 }

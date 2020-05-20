@@ -44,7 +44,7 @@ class Navigation extends React.Component {
 
   render(){
     return(
-      <nav className="nav nav--left">
+      <nav className="nav nav--left" id="mainNavigation">
         <div className="nav__content">
           <div className="nav__elements">
             {
@@ -56,7 +56,7 @@ class Navigation extends React.Component {
                     key={index}
                     index={index}
                     activate={this.activate}
-                    selected={this.state.currentElement == index} />
+                    selected={this.state.currentElement === index} />
                   );
                 })
             }

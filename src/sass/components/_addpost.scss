@@ -1,5 +1,41 @@
+
+.addpost__toolblock{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button{
+    &:not(:last-child){
+      margin-right: 1.5rem;
+    }
+    //flex: 1;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    font-size: 1.7rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    color: $color-white;
+    padding: 10px;
+    & > :not(:last-child){
+      margin-right: 1rem;
+    }
+    &:hover{
+      background-color: $color-dark-tertiary;
+    }
+  }
+}
+
+
 .addpost__input{
   display: flex;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $color-dark-primary;
 
 
   .input__btn{

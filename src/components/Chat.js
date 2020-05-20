@@ -1,7 +1,14 @@
 import React from 'react';
 import {API} from '../api/birdyapi.js';
+import {Twemoji} from 'react-emoji-render';
 
-let messages = [
+import 'emoji-mart/css/emoji-mart.css'
+import data from 'emoji-mart/data/google.json'
+import { NimblePicker } from 'emoji-mart'
+
+
+
+/*let messages = [
   {"self":true, "photo":"test", "content":"some stuff"},
   {"self":true, "photo":"test", "content":"some stuff"},
   {"self":false, "photo":"test", "content":"some stuff"},
@@ -15,7 +22,7 @@ let messages = [
   {"self":true, "photo":"test", "content":"some stuff"},
   {"self":false, "photo":"test", "content":"some other stuff i'm trying to do stuff here just to see if the stuff goes as it was stuffed to do  so till now every stuff seem to be "},
   {"self":true, "photo":"test", "content":"some stuff"},
-]
+]*/
 
 class Chat extends React.Component{
 
@@ -72,7 +79,7 @@ class Chat extends React.Component{
     }
   }
   send = (e) => {
-    if(e.keyCode == 13 && e.shiftKey == false) {
+    if(e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       //alert("SEND !!");
       this.ws.send(this.state.value);
@@ -119,17 +126,18 @@ class Chat extends React.Component{
      parentz.style.height = h+"px";
     }
   }
-
+//{<span className="message__content">{message.content}</span>}
   message_element = (message, index) => {
     let message_type = "message " + (message.self === true ? "message--self" : "message--other");
     //console.log(message_type);
     return(
       <div className={message_type} key={index}>
         <div className="message__profile" style={{"overflow":"hidden"}}>
-          <img style={{"height":"100%", "width":"100%", "object-fit": "cover"}}
+          <img alt="profile" style={{"height":"100%", "width":"100%", "objectFit": "cover"}}
           src={message.photo}/>
         </div>
-        <span className="message__content">{message.content}</span>
+        <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}/>
+
       </div>
     );
   }
@@ -151,12 +159,15 @@ class Chat extends React.Component{
 
             <div className="input">
               <div className="tools">
-                <div className="emojis">
-                </div>
-                <div className="emojis">
-                </div>
-                <div className="emojis">
-                </div>
+                <button className="emojis" onClick={(e) => e.preventDefault()} style={{"position":"relative"}}>
+                  <NimblePicker theme="dark" set='twitter' data={data} style={{
+                    "position":"absolute",
+                    "bottom": "60px",
+                    "left":"0"
+                  }}/>
+                </button>
+                <button className="emojis">
+                </button>
               </div>
 
               <div className="text">

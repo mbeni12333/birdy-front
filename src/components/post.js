@@ -36,8 +36,8 @@ const post_element = (post) => {
         <div className="post__content-body">
           <div className="post__content-body__text">{post.content}</div>
           <div className="post__content-body__photo">
-            {post.photos.map(photo => {
-              return <img src={photo} />
+            {post.photos.map((photo, index) => {
+              return <img key={index} src={photo} />
             })}
           </div>
         </div>

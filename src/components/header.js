@@ -3,10 +3,16 @@ import {Route, Link} from 'react-router-dom';
 
 import Field from './field.js';
 
+
+const toggleNav = () => {
+  let nav = document.getElementById("mainNavigation");
+  nav.classList.toggle("active");
+}
+
 const Header = () => {
   return(
     <header className="header">
-      <div className="header__logo">
+      <div className="header__logo" onClick={() => toggleNav()}>
         <div className="header__logo-label">
           Birdy-App
         </div>

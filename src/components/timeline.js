@@ -55,7 +55,7 @@ const Timeline = () => {
     return(
 
         <div className="card-container card-container--timeline">
-          {posts.map(post => {
+          {posts.map((post, index) => {
             return <Post
                     user={post.user}
                     photos={post.photos}
@@ -63,7 +63,8 @@ const Timeline = () => {
                     timestamp={post.timestamp}
                     like={post.like}
                     comment={post.comment}
-                    share={post.share}/>
+                    share={post.share}
+                    key={index}/>
           })}
         </div>
     )
