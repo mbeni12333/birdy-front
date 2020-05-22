@@ -916,7 +916,18 @@ a, a:focus, a:active, a:visited {
         height: 100%;
         border-radius: 50%;
         margin-right: 3px;
-        background-color: #f4f4f4; }
+        outline: none;
+        border: none;
+        background-color: transparent;
+        color: #3a3b3c;
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .chat .input .tools .emojis:hover {
+          cursor: pointer;
+          color: #777;
+          background-color: #3a3b3c; }
     .chat .input .send {
       width: 40px;
       height: 40px;

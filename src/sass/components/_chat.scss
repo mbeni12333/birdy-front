@@ -61,7 +61,23 @@
         border-radius: 50%;
         margin-right: 3px;
         //background-color: red;
-        background-color: $color-grey-light-1;
+        //background-color: $color-grey-light-1;
+        outline: none;
+        border: none;
+        background-color: transparent;
+
+        color: $color-dark-tertiary;
+        font-size: 4rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+          cursor: pointer;
+          color:$color-grey-dark;
+          background-color: $color-dark-tertiary;
+        }
       }
     }
     .send{

@@ -31,6 +31,7 @@ class Chat extends React.Component{
 
     this.messageref = React.createRef();
     this.state = {
+      "emojis": false,
       "messages": [],
       "value": "",
       "user":{
@@ -147,6 +148,18 @@ class Chat extends React.Component{
     this.messageref.current.scrollTop = this.messageref.current.scrollHeight;
   }
 
+
+  toggleEmojis = () => {
+    this.setState({
+      "emojis": !this.state.emojis
+    })
+  }
+
+  addEmoji = (emoji) => {
+    this.setState({
+      value: this.state.value + " " + emoji + " "
+    })
+  }
   render() {
     return (
       <div className="chat">
@@ -159,22 +172,43 @@ class Chat extends React.Component{
 
             <div className="input">
               <div className="tools">
-                <button className="emojis" onClick={(e) => e.preventDefault()} style={{"position":"relative"}}>
-                  <NimblePicker theme="dark" set='twitter' data={data} style={{
+                <div className="emojis" onClick={(e) => {
+                    e.preventDefault();
+                    this.toggleEmojis();
+
+                  }} onFocusOut={(e) => {
+                      alert("khra")
+                  }} style={{"position":"relative"}}>
+
+                    <i className="far fa-laugh-wink"></i>
+
+                  <NimblePicker title="Emojis" theme="dark" set='twitter' data={data} style={{
                     "position":"absolute",
                     "bottom": "60px",
-                    "left":"0"
+                    "left":"0",
+                    "display": this.state.emojis === true ? "initial": "none"
+                  }} onClick={(emoji, event) => {
+                    event.stopPropagation()
+                    //alert(JSON.stringify(emoji))
+                  }} onSelect={(emoji) => {
+                    this.addEmoji(emoji.colons)
                   }}/>
-                </button>
-                <button className="emojis">
-                </button>
+                </div>
+                <div className="emojis">
+                  <i className="fas fa-image"></i>
+                </div>
               </div>
 
               <div className="text">
                 <textarea placeholder="Aa..."
                   value={this.state.value}
                   onInput={(e) => this.auto_grow(e)}
-                  onKeyDown={this.send.bind(this)}></textarea>
+                  onKeyDown={this.send.bind(this)}
+                  onFocus={(e) => {
+                    if(this.state.emojis === true){
+                      this.setState({emojis: false})
+                    }
+                  }}></textarea>
               </div>
 
               <div className="send">
