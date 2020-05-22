@@ -13,6 +13,7 @@ body {
   background-color: #201a1a;
   box-sizing: border-box;
   overflow-x: hidden;
+  overflow: hidden;
   color: #fff; }
 
 .root {
@@ -20,7 +21,7 @@ body {
 
 .App {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column; }
@@ -37,18 +38,18 @@ a, a:focus, a:active, a:visited {
   height: 5px; }
 
 ::-webkit-scrollbar-track {
-  background: #eee;
-  border: thin solid lightgray;
+  background: #242526;
+  border: thin solid #242526;
   box-shadow: 0px 0px 3px #dfdfdf inset;
   border-radius: 10px; }
 
 ::-webkit-scrollbar-thumb {
-  background: #999;
+  background: #3a3b3c;
   border: thin solid gray;
   border-radius: 10px; }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7d7d7d; }
+  background: #474849; }
 
 .u-center-text {
   text-align: center; }
@@ -222,7 +223,7 @@ a, a:focus, a:active, a:visited {
         .nav--left.active::before {
           content: '';
           height: 100vh;
-          width: 100vh;
+          width: 100vw;
           z-index: -1;
           background-color: rgba(36, 37, 38, 0.8);
           position: fixed;
@@ -1224,12 +1225,14 @@ a, a:focus, a:active, a:visited {
       flex-direction: column;
       align-items: stretch; } }
   .main_container main {
-    flex: 4;
+    flex: 1;
     height: 100%;
     margin-top: 64px;
     overflow-y: hidden;
     overflow-x: hidden; }
     .main_container main .main {
+      overflow-y: scroll;
+      scrollbar-width: thin;
       overflow-x: hidden;
       height: 100%;
       padding: 10px; }

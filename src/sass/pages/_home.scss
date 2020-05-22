@@ -36,14 +36,15 @@
     //min-height: 100vw;
     //margin-left: auto;
     //margin-right: auto;
-    flex:4;
+    flex:1;
     height: 100%;
     margin-top: 64px;
     overflow-y: hidden;
     overflow-x: hidden;
 
     .main{
-      //overflow-y: scroll;
+      overflow-y: scroll;
+      scrollbar-width: thin;
       overflow-x: hidden;
       height: 100%;
       padding: 10px;

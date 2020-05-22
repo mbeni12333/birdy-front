@@ -7,6 +7,12 @@ import data from 'emoji-mart/data/google.json'
 import { NimblePicker } from 'emoji-mart'
 
 
+const touz = new Audio()
+touz.src = "/audio/6ouz.mp3"
+
+const playtouz = () => {
+  touz.play();
+}
 
 /*let messages = [
   {"self":true, "photo":"test", "content":"some stuff"},
@@ -61,6 +67,8 @@ class Chat extends React.Component{
         this.setState({
           "messages": [...this.state.messages, data]
         });
+
+        playtouz();
       }else{
         this.setState({
           "user": JSON.parse(e.data)

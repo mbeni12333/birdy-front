@@ -17,6 +17,7 @@ body{
     background-color: $color-dark-primary;
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow: hidden;
     color: $color-white;
 }
 
@@ -26,7 +27,7 @@ body{
 .App{
   width: 100vw;
   //height: calc(var(--vh, 1vh) * 100);
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,16 +49,16 @@ a{
     height:5px;
 }
 ::-webkit-scrollbar-track {
-    background:#eee;
-    border: thin solid lightgray;
+    background:$color-dark-secondary;
+    border: thin solid $color-dark-secondary;
     box-shadow: 0px 0px 3px #dfdfdf inset;
     border-radius:10px;
 }
 ::-webkit-scrollbar-thumb {
-    background:#999;
+    background:$color-dark-tertiary;
     border: thin solid gray;
     border-radius:10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background:#7d7d7d;
+    background:lighten($color-dark-tertiary, 5);
 }
