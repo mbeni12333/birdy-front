@@ -13,7 +13,7 @@ const Navelement = (props) => {
   var icon_class = "nav__element-icon" + (props.selected === true ? " nav__element-icon--selected" : "");
   //console.log({"icon_class":icon_class, "selected": element.selected});
   return(
-      <Link to={props.element.to} className="nav__element"
+      <li><Link to={props.element.to} className="nav__element"
        onClick={() => {
          props.activate(props.index);
        }} >
@@ -21,7 +21,7 @@ const Navelement = (props) => {
           <i className={props.element.icon}></i>
         </div>
         <div className="nav__element-label">{props.element.name}</div>
-      </Link>
+      </Link></li>
   );
 };
 
@@ -46,7 +46,7 @@ class Navigation extends React.Component {
     return(
       <nav className="nav nav--left" id="mainNavigation">
         <div className="nav__content">
-          <div className="nav__elements">
+          <ul className="nav__elements">
             {
                 elements.map((element, index) => {
                   //alert("hey index = " + index);
@@ -60,7 +60,7 @@ class Navigation extends React.Component {
                   );
                 })
             }
-          </div>
+          </ul>
         </div>
       </nav>
     );

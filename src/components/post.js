@@ -1,50 +1,109 @@
 import React from 'react';
 import image from '../images/graphql.png';
+import Fullsc from '../components/fullsc.js';
+import ReactDOM from 'react-dom';
 
 
 
+class PostElement extends React.Component {
+
+  //console.log(post);
+  //var username = post.user.username ? post.user.username : "User";
+  constructor(props){
+    super(props)
+
+    this.state = {
+      active: false,
+      lastPhoto: ""
+    }
+  }
 
 
-const post_element = (post) => {
+  toggleActive = (photo) => {
+    //alert(photo);
 
-  console.log(post);
-  var username = post.user.username ? post.user.username : "User";
+    this.setState({
+      active: !this.state.active,
+      lastPhoto: photo
+    })
+  }
 
-  return (
-    <div className="post">
-      <div className="post__aside">
-      <div className="post__aside-element post__aside-element--icon">
-        <i className="fas fa-retweet"></i>
-      </div>
-        <div className="post__aside-element post__aside-element--picture">
-          <img src={post.user.profile_pic} className="ost__aside-element-picture" />
+  render(){
+
+    const post = this.props
+    var username = post.user.username ? post.user.username : "User";
+
+
+
+    if(this.state.active === true){
+      return(
+        <div className="fullsc-conatiner" id="fullsc-conatiner">
+          <button className="btn-circle btn-circle--large fullsc-close" onClick={(e) => this.toggleActive("")}>
+            <i className="fas fa-times"></i>
+          </button>
+
+          <img src={this.state.lastPhoto} style={{
+            "position": "absolute",
+            "objectFit": "cover",
+            "width": "200vw",
+            "top":"0",
+            "left":"0",
+            "filter":"blur(10px) brightness(0.4)",
+            "z-index": "-1"
+          }}/>
+
+          <img src={this.state.lastPhoto} style={{
+            "flex": "1",
+            "width": "auto",
+            "objectFit": "contain",
+            "max-height": "80%"
+          }}/>
+
         </div>
-        <div className="post__aside-element post__aside-element--bar">
-          <div className="post__aside-element-bar"></div>
-        </div>
-      </div>
-      <div className="post__content">
-        <div className="post__content-header">
-          <p>Mounib shared</p>
-        </div>
-        <div className="post__content-person">
-          <div className="post__content-person-name"><b>{post.user.username}</b></div>
-          <div className="post__content-person-link"><i>{post.user.link}</i></div>
-          <div className="post__content-person-time"><i>{post.timestamp}</i></div>
+      )
+    }
 
-        </div>
-        <div className="post__content-body">
-          <div className="post__content-body__text">{post.content}</div>
-          <div className="post__content-body__photo">
-            {post.photos.map((photo, index) => {
-              return <img key={index} src={photo} />
-            })}
+    return (
+      <div className="post">
+        <div className="post__aside">
+          <div className="post__aside-element post__aside-element--icon"><i className="fas fa-retweet"></i></div>
+          <div className="post__aside-element post__aside-element--picture">
+            <img src={post.user.profile_pic} className="ost__aside-element-picture" />
+          </div>
+          <div className="post__aside-element post__aside-element--bar">
+            <div className="post__aside-element-bar"></div>
           </div>
         </div>
+        <div className="post__content">
+          <div className="post__content-header">
+            <p>Mounib shared</p>
+          </div>
+          <div className="post__content-person">
+            <div className="post__content-person-name"><b>{post.user.username}</b></div>
+            <div className="post__content-person-link"><i>{post.user.link}</i></div>
+            <div className="post__content-person-time"><i>{post.timestamp}</i></div>
 
+          </div>
+          <div className="post__content-body">
+            <div className="post__content-body__text">{post.content}</div>
+            <div className="post__content-body__photo">
+
+
+              {
+                  post.photos.map((photo, index) => {
+                    return(
+                      <img key={index} src={photo} onClick={() => this.toggleActive(photo)} />
+                    )
+                  })
+              }
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
 
@@ -60,7 +119,7 @@ class Post extends React.Component{
       <div className="card-container card-container--post">
         <div className="card card--post">
           <div className="post-container">
-              {post_element(this.props)}
+              <PostElement {...this.props}/>
           </div>
           <div className="post__content-footer">
             <div className="post__footer-button">

@@ -84,7 +84,7 @@
 
     width: 320px;
 
-    @media (max-width: 1300px){
+    @media (max-width: 1300px) and (min-width: 1000px){
       width: 64px;
     }
     display: flex;

@@ -250,7 +250,7 @@ a, a:focus, a:active, a:visited {
     flex-direction: column;
     position: fixed;
     top: 60px; }
-    @media (max-width: 1300px) {
+    @media (max-width: 1300px) and (min-width: 1000px) {
       .nav__content {
         width: 64px; } }
   .nav__desc {
@@ -527,7 +527,6 @@ a, a:focus, a:active, a:visited {
         background-color: #ffb900;
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3); }
   .post__aside {
-    flex: 1;
     max-width: 100px;
     display: flex;
     flex-direction: column;
@@ -590,14 +589,17 @@ a, a:focus, a:active, a:visited {
         margin-top: 10px;
         max-width: 100%;
         display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-auto-flow: dense;
         border: 2px solid #f4f4f4;
         grid-gap: 3px;
         border-radius: 20px;
-        overflow: hidden; }
+        overflow: hidden;
+        min-height: 35rem; }
         .post__content-body__photo img {
           object-fit: cover;
+          height: 100%;
           width: 100%; }
     .post__content-footer {
       display: flex;
