@@ -10,7 +10,7 @@ html {
   font-size: 50%; }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #201a1a;
   box-sizing: border-box;
   overflow-x: hidden;
   color: #fff; }
@@ -279,8 +279,8 @@ a, a:focus, a:active, a:visited {
     .nav__element-label {
       display: flex;
       flex: 1;
-      padding: 10px;
-      font-size: 1.8rem;
+      padding: 10px 20px;
+      font-size: 2rem;
       color: #fff;
       align-items: center; }
       .nav__element-label--white {
@@ -290,30 +290,34 @@ a, a:focus, a:active, a:visited {
         flex: 1;
         text-align: left; }
       .nav__element-label-status {
-        height: 12px;
-        width: 12px;
-        border-radius: 50%; }
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        border: 3px solid #201a1a;
+        position: absolute;
+        bottom: 0;
+        right: 0; }
         .nav__element-label-status--online {
           background-color: green; }
         .nav__element-label-status--offline {
           background-color: red; }
     .nav__element-user {
-      background-color: #ddd;
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       position: relative;
       overflow: hidden; }
       .nav__element-user img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 0 0px; }
+        object-position: 0 0px;
+        border-radius: 50%; }
     .nav__element-icon {
       display: flex;
       height: 54px;
       align-items: center;
       justify-content: center;
+      position: relative;
       width: 54px;
       color: #cbcdde;
       font-size: 24px; }

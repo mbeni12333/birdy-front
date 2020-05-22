@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: inherit;
   font-family: inherit;
+
 }
 
 html{
@@ -13,7 +14,7 @@ html{
 }
 
 body{
-    background-color: $color-grey-light-1;
+    background-color: $color-dark-primary;
     box-sizing: border-box;
     overflow-x: hidden;
     color: $color-white;

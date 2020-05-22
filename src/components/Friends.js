@@ -23,10 +23,10 @@ const Friends = () => {
           <div className="nav__element-user">
             <img src={person.photo}/>
           </div>
+          <div className="nav__element-label-status nav__element-label-status--online"></div>
         </div>
         <div className="nav__element-label">
           <span className="nav__element-label-text">{person.pseudo}</span>
-          <div className="nav__element-label-status nav__element-label-status--online"></div>
         </div>
       </div>
     );
@@ -35,7 +35,7 @@ const Friends = () => {
   return(
     <aside className="nav nav--right">
       <div className="nav__content">
-        <div className="nav__desc">
+        <div className="nav__desc" style={{"display":"none"}}>
           <p>Contact</p>
           <span>search</span>
         </div>
