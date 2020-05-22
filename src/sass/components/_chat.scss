@@ -109,6 +109,7 @@
 
       margin-bottom: 10px;
       display: flex;
+      align-items: center;
       word-wrap:break-word;
       font-size: 2rem;
 
@@ -119,7 +120,7 @@
         z-index: 0;
         .message__profile{
           margin-left:15px;
-          display: none;
+          //display: none;
         }
         .message__content{
           //background-color: #4FC3F7;
@@ -127,6 +128,8 @@
          background-size: cover;
          background-position: center;
          background-attachment: fixed;
+
+          //height: 20px;
 
           // &::before{
           //  border-left: 10px solid #4FC3F7;

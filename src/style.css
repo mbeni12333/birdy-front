@@ -951,6 +951,7 @@ a, a:focus, a:active, a:visited {
     .chat .messages .message {
       margin-bottom: 10px;
       display: flex;
+      align-items: center;
       word-wrap: break-word;
       font-size: 2rem; }
       .chat .messages .message--self {
@@ -958,8 +959,7 @@ a, a:focus, a:active, a:visited {
         color: #fff;
         z-index: 0; }
         .chat .messages .message--self .message__profile {
-          margin-left: 15px;
-          display: none; }
+          margin-left: 15px; }
         .chat .messages .message--self .message__content {
           background-image: linear-gradient(to bottom right, #ff8fb2 0%, #a797ff 50%, #00e5ff 100%);
           background-size: cover;
