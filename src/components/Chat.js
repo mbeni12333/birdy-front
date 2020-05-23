@@ -8,7 +8,7 @@ import { NimblePicker } from 'emoji-mart'
 
 
 const touz = new Audio()
-touz.src = "/audio/6ouz.mp3"
+touz.src = "/audio/not.mp3"
 
 const playtouz = () => {
   touz.play();
