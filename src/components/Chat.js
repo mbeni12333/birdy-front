@@ -7,28 +7,31 @@ import data from 'emoji-mart/data/google.json'
 import { NimblePicker } from 'emoji-mart'
 
 
-const touz = new Audio()
-touz.src = "/audio/not.mp3"
+const sout = new Audio()
+sout.src = "/audio/not.mp3"
 
-const playtouz = () => {
-  touz.play();
+const playsout = () => {
+  sout.play();
 }
 
-/*let messages = [
-  {"self":true, "photo":"test", "content":"some stuff"},
-  {"self":true, "photo":"test", "content":"some stuff"},
-  {"self":false, "photo":"test", "content":"some stuff"},
-  {"self":true, "photo":"test", "content":"some stuff"},
-  {"self":false, "photo":"test", "content":"some stuff"},
-  {"self":false, "photo":"test", "content":"Tottaly right i agree with the person that didn't speek yet , the stuff seem to work coorectly but the font is shutty as hell , maybe change it to roboto"},
-  {"self":false, "photo":"test", "content":"some stuff"},
-  {"self":true, "photo":"test", "content":"some other stuff i'm trying to do stuff here just to see if the stuff goes as "},
-  {"self":true, "photo":"test", "content":"some stuff"},
-  {"self":false, "photo":"test", "content":"some other stuff i'm trying to do stuff here just to see if the stuff goes as it was stuffed to do  so till now every stuff seem to be working , maybe change teh font later i don't know suufjdklfkd sjflkjds"},
-  {"self":true, "photo":"test", "content":"some stuff"},
-  {"self":false, "photo":"test", "content":"some other stuff i'm trying to do stuff here just to see if the stuff goes as it was stuffed to do  so till now every stuff seem to be "},
-  {"self":true, "photo":"test", "content":"some stuff"},
-]*/
+const colors = {
+  1: {"backgroundImage":"linear-gradient(to right bottom, #FF6CAB, #7366FF)"},
+  2: {"backgroundImage":"linear-gradient(to right bottom, #B65EBA, #2E8DE1)"},
+  3: {"backgroundImage":"linear-gradient(to right bottom, #64E8DE, #8A64EB)"},
+  4: {"backgroundImage":"linear-gradient(to right bottom, #7BF2E9, #B65EBA)"},
+  5: {"backgroundImage":"linear-gradient(to right bottom, #FF9482, #7D77FF)"},
+  6: {"backgroundImage":"linear-gradient(to right bottom, #FFCF18, #FF8818)"},
+  7: {"backgroundImage":"linear-gradient(to right bottom, #FFA62E, #EA4D2C)"},
+  8: {"backgroundImage":"linear-gradient(to right bottom, #00FFED, #00B8BA)"},
+  9: {"backgroundImage":"linear-gradient(to right bottom, #6EE2F5, #6454F0)"},
+  10: {"backgroundImage":"linear-gradient(to right bottom, #3499FF, #3A3985)"},
+  11: {"backgroundImage":"linear-gradient(to right bottom, #FF9897, #F650A0)"},
+  12: {"backgroundImage":"linear-gradient(to right bottom, #FFCDA5, #EE4D5F)"},
+  13: {"backgroundImage":"linear-gradient(to right bottom, #FF5B94, #8441A4)"},
+  14: {"backgroundImage":"linear-gradient(to right bottom, #F869D5, #5650DE)"},
+  15: {"backgroundImage":"linear-gradient(to right bottom, #F00B51, #7366FF)"}
+}
+
 
 class Chat extends React.Component{
 
@@ -37,6 +40,8 @@ class Chat extends React.Component{
 
     this.messageref = React.createRef();
     this.state = {
+      "color":8,
+      "colorPicker":false,
       "emojis": false,
       "messages": [],
       "value": "",
@@ -68,7 +73,7 @@ class Chat extends React.Component{
           "messages": [...this.state.messages, data]
         });
 
-        playtouz();
+        playsout();
       }else{
         this.setState({
           "user": JSON.parse(e.data)
@@ -107,6 +112,10 @@ class Chat extends React.Component{
 
     }
   }
+  /*
+    to replace with liable textarea autoresize
+    clean up code later
+  */
   auto_grow  = (e) => {
 
     e = e.target ;
@@ -120,7 +129,6 @@ class Chat extends React.Component{
     e.style.height = (50 + (parseInt(lines))*20)+"px";
     e.parentNode.style.height = e.style.height;
   }
-
   check  = (e) => {
     e = e.target;
     var parentz = e.parentNode;
@@ -136,24 +144,29 @@ class Chat extends React.Component{
     }
   }
 //{<span className="message__content">{message.content}</span>}
-  message_element = (message, index) => {
+  /*message_element = (message, index) => {
     let message_type = "message " + (message.self === true ? "message--self" : "message--other");
     //console.log(message_type);
     return(
-      <div className={message_type} key={index}>
+      <div className={message_type} key={index} >
         <div className="message__profile" style={{"overflow":"hidden"}}>
           <img alt="profile" style={{"height":"100%", "width":"100%", "objectFit": "cover"}}
           src={message.photo}/>
         </div>
-        <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}/>
+        <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}
+        style={message.self === true ? colors[this.state.color] : {}}/>
 
       </div>
     );
-  }
+  }*/
 
   componentDidUpdate(){
-    console.log("khra : " + this.messageref.current.scrollHeight)
-    this.messageref.current.scrollTop = this.messageref.current.scrollHeight;
+    //console.log("khra : " + this.messageref.current.scrollHeight)
+    try{
+      this.messageref.current.scrollTop = this.messageref.current.scrollHeight;
+    }catch(e){
+
+    }
   }
 
 
@@ -169,10 +182,59 @@ class Chat extends React.Component{
     })
   }
   render() {
+
+
+    if(this.state.colorPicker === true){
+
+      return(
+          <div className="fullsc-conatiner" id="fullsc-conatiner">
+            <button className="btn-circle btn-circle--large fullsc-close" onClick={(e) => this.setState({colorPicker:false})}>
+              <i className="fas fa-times"></i>
+            </button>
+
+            <div className="card-container card-container--colorPicker">
+              <div className="card card--colorPicker">
+                <div className="colorPicker">
+                  {
+                    Object.keys(colors).map((index, key) => {
+                      return(
+                        <div key={key} className="colorPicker__color" style={colors[index]}
+                        onClick={e => this.setState({colorPicker:false, color:index})}></div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+      )
+    }
+
+
     return (
       <div className="chat">
             <div className="messages" ref={this.messageref}>
-              {this.state.messages.map( (message, index) => this.message_element(message, index))}
+              {
+                this.state.messages.map( (message, index) => {
+
+                  //return this.message_element(message, index)
+                  let message_type = "message " +
+                   (message.self === true ? "message--self " : "message--other ") +
+                   ((this.state.messages.length === index+1 || message.self !== this.state.messages[index+1].self)? "message--last": "");
+                  //console.log(message_type);
+                  return(
+                    <div className={message_type} key={index} >
+                      <div className="message__profile" style={{"overflow":"hidden"}}>
+                        <img alt="profile" style={{"height":"100%", "width":"100%", "objectFit": "cover"}}
+                        src={message.photo}/>
+                      </div>
+                      <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}
+                      style={message.self === true ? colors[this.state.color] : {}}/>
+
+                    </div>
+                  );
+                })
+              }
               <div className="messages_vu" style={{ "padding":"1px", "color":"red", "textAlign":"right"}}>
                 vu
               </div>
@@ -183,12 +245,15 @@ class Chat extends React.Component{
                 <div className="emojis" onClick={(e) => {
                     e.preventDefault();
                     this.toggleEmojis();
-
-                  }} onFocusOut={(e) => {
-                      alert("khra")
-                  }} style={{"position":"relative"}}>
-
-                    <i className="far fa-laugh-wink"></i>
+                  }}style={{"position":"relative"}}>
+                    <i className="far fa-laugh-wink" style={{
+                      "backgroundImage":colors[this.state.color].backgroundImage,
+                      "WebkitBackgroundClip":"text",
+                      "WebkitTextFillColor":"transparent",
+                      "backgroundSize": "cover",
+                      "backgroundPosition": "center",
+                      "backgroundAttachment": "fixed"
+                    }}></i>
 
                   <NimblePicker title="Emojis" theme="dark" set='twitter' data={data} style={{
                     "position":"absolute",
@@ -202,8 +267,12 @@ class Chat extends React.Component{
                     this.addEmoji(emoji.colons)
                   }}/>
                 </div>
-                <div className="emojis">
-                  <i className="fas fa-image"></i>
+                <div className="emojis" onClick={(e) => this.setState({colorPicker:true})}>
+                  <i className="fas fa-image" style={{
+                    "backgroundImage":colors[this.state.color].backgroundImage,
+                    "WebkitBackgroundClip":"text",
+                    "WebkitTextFillColor":"transparent"
+                  }}></i>
                 </div>
               </div>
 
