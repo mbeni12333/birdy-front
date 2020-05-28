@@ -566,7 +566,8 @@ a, a:focus, a:active, a:visited {
       color: #777; }
   .post__content {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    flex: 1; }
     .post__content-header {
       padding-left: 10px;
       height: 26px;
@@ -594,8 +595,7 @@ a, a:focus, a:active, a:visited {
         margin-top: 10px;
         max-width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         grid-auto-flow: dense;
         border: 2px solid #f4f4f4;
         grid-gap: 3px;
@@ -883,7 +883,12 @@ a, a:focus, a:active, a:visited {
   .colorPicker__color {
     border-radius: 10px;
     height: 100%;
-    width: 100%; }
+    width: 100%;
+    transition: all .2s ease-in-out; }
+    .colorPicker__color:hover {
+      box-shadow: 3px 1px 4px rgba(32, 26, 26, 0.7);
+      transform: scale(1.1);
+      transition: all .1s ease-in-out; }
 
 .wall {
   width: 100%;
@@ -1183,9 +1188,13 @@ a, a:focus, a:active, a:visited {
       border-radius: 5px;
       color: #fff;
       font-weight: bold;
-      background-color: #3a3b3c; }
-      .fullsc-conatiner .fullsc .addpost__publish:hover {
-        background-color: #242526; }
+      background-color: #3a3b3c;
+      transition: background-color .3s ease-in-out; }
+      .fullsc-conatiner .fullsc .addpost__publish--active {
+        background-color: #2998ff; }
+        .fullsc-conatiner .fullsc .addpost__publish--active:hover {
+          cursor: pointer;
+          transition: background-color .1s ease-in-out; }
     .fullsc-conatiner .fullsc .addpost__user {
       width: 100%;
       display: flex;

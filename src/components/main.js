@@ -4,7 +4,7 @@ import Profile from './profile.js';
 import {Route, Link, Switch, Redirect} from 'react-router-dom';
 import {API} from '../api/birdyapi.js';
 import Chat from './Chat.js';
-
+import Home from '../components/home.js';
 
 
 const Logout = () => {
@@ -31,7 +31,8 @@ const Main = () => {
       <Switch>
         <Route exact path="/profile" component={Profile} />
         <Route path="/chat" component={Chat} />
-        <Route exact path="/" component={Logout}/>
+        <Route exact path="/logout" component={Logout}/>
+        <Route exact path="/" component={Home}/>
       </Switch>
     </main>
   )

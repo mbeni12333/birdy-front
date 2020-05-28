@@ -36,11 +36,17 @@
         color: $color-white;
         font-weight: bold;
         background-color: $color-dark-tertiary;
+        transition: background-color .3s ease-in-out;
 
-        &:hover{
-          background-color:$color-dark-secondary;
+        &--active{
+          background-color: $color-tertiary-light;
 
+          &:hover{
+            cursor: pointer;
+            transition: background-color .1s ease-in-out;
+          }
         }
+
       }
       &__user{
         width: 100%;

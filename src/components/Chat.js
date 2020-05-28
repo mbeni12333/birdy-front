@@ -15,24 +15,26 @@ const playsout = () => {
 }
 
 const colors = {
-  1: {"backgroundImage":"linear-gradient(to right bottom, #FF6CAB, #7366FF)"},
-  2: {"backgroundImage":"linear-gradient(to right bottom, #B65EBA, #2E8DE1)"},
-  3: {"backgroundImage":"linear-gradient(to right bottom, #64E8DE, #8A64EB)"},
-  4: {"backgroundImage":"linear-gradient(to right bottom, #7BF2E9, #B65EBA)"},
-  5: {"backgroundImage":"linear-gradient(to right bottom, #FF9482, #7D77FF)"},
-  6: {"backgroundImage":"linear-gradient(to right bottom, #FFCF18, #FF8818)"},
-  7: {"backgroundImage":"linear-gradient(to right bottom, #FFA62E, #EA4D2C)"},
-  8: {"backgroundImage":"linear-gradient(to right bottom, #00FFED, #00B8BA)"},
-  9: {"backgroundImage":"linear-gradient(to right bottom, #6EE2F5, #6454F0)"},
-  10: {"backgroundImage":"linear-gradient(to right bottom, #3499FF, #3A3985)"},
-  11: {"backgroundImage":"linear-gradient(to right bottom, #FF9897, #F650A0)"},
-  12: {"backgroundImage":"linear-gradient(to right bottom, #FFCDA5, #EE4D5F)"},
-  13: {"backgroundImage":"linear-gradient(to right bottom, #FF5B94, #8441A4)"},
-  14: {"backgroundImage":"linear-gradient(to right bottom, #F869D5, #5650DE)"},
-  15: {"backgroundImage":"linear-gradient(to right bottom, #F00B51, #7366FF)"}
+  1: {"backgroundImage":"linear-gradient(170deg, #FF6CAB, #7366FF)"},
+  2: {"backgroundImage":"linear-gradient(170deg, #B65EBA, #2E8DE1)"},
+  3: {"backgroundImage":"linear-gradient(170deg, #64E8DE, #8A64EB)"},
+  4: {"backgroundImage":"linear-gradient(170deg, #7BF2E9, #B65EBA)"},
+  5: {"backgroundImage":"linear-gradient(170deg, #FF9482, #7D77FF)"},
+  6: {"backgroundImage":"linear-gradient(170deg, #FFCF18, #FF8818)"},
+  7: {"backgroundImage":"linear-gradient(170deg, #FFA62E, #EA4D2C)"},
+  8: {"backgroundImage":"linear-gradient(170deg, #00FFED, #00B8BA)"},
+  9: {"backgroundImage":"linear-gradient(170deg, #6EE2F5, #6454F0)"},
+  10: {"backgroundImage":"linear-gradient(170deg, #3499FF, #3A3985)"},
+  11: {"backgroundImage":"linear-gradient(170deg, #FF9897, #F650A0)"},
+  12: {"backgroundImage":"linear-gradient(170deg, #FFCDA5, #EE4D5F)"},
+  13: {"backgroundImage":"linear-gradient(170deg, #FF5B94, #8441A4)"},
+  14: {"backgroundImage":"linear-gradient(170deg, #F869D5, #5650DE)"},
+  15: {"backgroundImage":"linear-gradient(170deg, #F00B51, #7366FF)"},
+
+  16: {"backgroundImage":"linear-gradient(170deg, #6454F0 0%, #7D77FF 10%, #2E8DE1 20%, #3499FF 30%, #99D65A 40%, #FFCF18 50%, #FFA62E 60%, #FF8818 70%, #EA4D2C 80%, #F00B51 90%, #F00B51 100%)"},
+  17: {"backgroundImage":"linear-gradient(to bottom, #16C9F2, #D72063)"},
+  18: {"backgroundImage":"linear-gradient(to bottom, #085ECD, #0869D1, #FF6E01, #FE1312)"},
 }
-
-
 class Chat extends React.Component{
 
   constructor(props){

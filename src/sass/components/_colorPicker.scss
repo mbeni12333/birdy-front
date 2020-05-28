@@ -12,5 +12,13 @@
     border-radius: 10px;
     height: 100%;
     width: 100%;
+
+    transition: all .2s ease-in-out;
+
+    &:hover{
+      box-shadow: 3px 1px 4px rgba($color-dark-primary, .7);
+      transform: scale(1.1);
+      transition: all .1s ease-in-out;
+    }
   }
 }

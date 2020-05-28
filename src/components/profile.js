@@ -8,27 +8,30 @@ import AddPost from './addpost.js'
 
 
 
-const Profile = () => {
-  return(
-    <div className="main">
-      <div className="content">
-        <div className="content__head">
-          <Wall />
-        </div>
-        <div className="content__body">
-          <div className="content__body-aside content_body-aside--left">
-              <Intro/>
-              <Amis/>
-              <Photos/>
+class Profile extends React.Component{
+
+  render(){
+    return(
+      <div className="main">
+        <div className="content">
+          <div className="content__head">
+            <Wall />
           </div>
-          <div className="content__body-main">
-            <AddPost /> 
-            <Timeline/>
+          <div className="content__body">
+            <div className="content__body-aside content_body-aside--left">
+                <Intro/>
+                <Amis/>
+                <Photos/>
+            </div>
+            <div className="content__body-main">
+              <AddPost />
+              <Timeline />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Profile;

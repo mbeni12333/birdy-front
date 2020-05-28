@@ -8,7 +8,7 @@
   font-size: 2rem;
   display: flex;
   flex-direction: column;
-  max-width: 940px;
+  max-width: 940px;//940px;
   margin-left: auto;
   margin-right: auto;
 
@@ -132,6 +132,7 @@
   &__content{
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     &-header{
       padding-left: 10px;
@@ -177,8 +178,8 @@
         max-width: 100%;
         display: grid;
         //grid-template-columns: 1fr auto;
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        //grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr));
         grid-auto-flow: dense;
         //grid-template-rows: 1fr 1fr;
         border: 2px solid $color-grey-light-1;
