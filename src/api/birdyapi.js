@@ -14,20 +14,17 @@ const API  = {
   },
   getToken(req, callback){
     //if(this.isLoggedIn === false){
-      console.log("request is : " , req);
+      //console.log("request is : " , req);
       axios.post("/auth", req)
       .then(res => {
         alert(JSON.stringify(res.data));
         if(res.data.status !== "KO"){
-
           //this.isLoggedIn = true;
-
           //this.token = res.data.token;
-
           localStorage.setItem("token", res.data.token);
-          console.log("khra1");
+          //console.log("khra1");
           SetAuthorizationToken(res.data.token);
-          console.log("khra2");
+          //console.log("khra2");
           callback(res.data.token);
         }
       })
@@ -39,7 +36,7 @@ const API  = {
     //}
   },
   signup(req, callback){
-    console.log("request is : " , req);
+    //console.log("request is : " , req);
     axios.post("/user", req)
     .then(res => {
       console.log("Error in the signup");
@@ -61,8 +58,10 @@ const API  = {
   },
   connectSocket(){
     this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
-
     return this.ws;
+  },
+  getUserInitialData(){
+    return axios.get("/user")
   }
 
 }

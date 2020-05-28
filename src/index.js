@@ -1,27 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {API, SetAuthorizationToken} from './api/birdyapi.js';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux'
-
 
 import App from './App';
 import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 
+import {createStore} from 'redux'
+import reducer from './reducers'
+import {Provider} from 'react-redux'
+import middleware from './middleware'
+
 /*Initialise state*/
 const token = localStorage.getItem("token");
 
 if(token !== null){
-  console.log("User is still logged in ");
+  //console.log("User is still logged in ");
   SetAuthorizationToken(token);
 }
 
-const dum = (state, action) => {
-  return state
-}
-
-const store = createStore(dum)
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
   <Provider store={store}>

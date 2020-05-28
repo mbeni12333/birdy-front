@@ -1203,6 +1203,7 @@ a, a:focus, a:active, a:visited {
       .fullsc-conatiner .fullsc .addpost__user img {
         height: 45px;
         width: 45px;
+        object-fit: cover;
         border-radius: 50%;
         background-color: #494d62;
         margin-right: 2rem; }

@@ -4,9 +4,8 @@ import Main from './components/main.js';
 import Friends from './components/Friends.js';
 import Navigation from './components/navigation.js';
 import {API} from './api/birdyapi.js';
-
 import {connect} from 'react-redux'
-
+import {handleInitialData} from './actions/shared.js';
 
 import {
   BrowserRouter as Router,
@@ -54,18 +53,26 @@ const Mainlayout = () => {
   );
 };
 
+class App extends React.Component{
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-            <Route component={Login} path="/login"/>
-            <AuthRoute component={Mainlayout} path = "/"/>
-        </Switch>
-      </Router>
-    </div>
-  );
+
+  componentDidMount(){
+      this.props.dispatch(handleInitialData());
+  }
+
+
+  render(){
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+              <Route component={Login} path="/login"/>
+              <AuthRoute component={Mainlayout} path = "/"/>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 
