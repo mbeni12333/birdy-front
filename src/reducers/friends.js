@@ -7,7 +7,7 @@ export function friends(state = {}, action){
 
     case GET_INITIAL_USERS:
       return {
-        ...action.post,
+        ...action.users,
         ...state
       }
 

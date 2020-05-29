@@ -1,10 +1,12 @@
 import React from 'react';
 import {API} from '../api/birdyapi.js';
 import {Twemoji} from 'react-emoji-render';
-
+import {connect} from 'react-redux';
 import 'emoji-mart/css/emoji-mart.css'
 import data from 'emoji-mart/data/google.json'
 import { NimblePicker } from 'emoji-mart'
+
+import {SEND_MESSAGE, RECEIVE_MESSAGE, sendMessage, receiveMessage} from '../actions/messages'
 
 
 const sout = new Audio()
@@ -45,13 +47,8 @@ class Chat extends React.Component{
       "color":8,
       "colorPicker":false,
       "emojis": false,
-      "messages": [],
+      //"messages": [],
       "value": "",
-      "user":{
-        "id":"",
-        "photo":"",
-        "username":"",
-      }
     }
 
     this.ready = false;
@@ -69,19 +66,21 @@ class Chat extends React.Component{
       //alert("BGHEL MESSAGE");
       var data = JSON.parse(e.data);
 
-      if(this.ready === true){
+      //if(this.ready === true){
         //switch(data.message_type)
-        this.setState({
+
+        /*this.setState({
           "messages": [...this.state.messages, data]
-        });
+        });*/
+        this.props.dispatch(receiveMessage(data));
 
         playsout();
-      }else{
-        this.setState({
-          "user": JSON.parse(e.data)
-        });
-        this.ready = true;
-      }
+      //}else{
+      //  this.setState({
+      //    "user": JSON.parse(e.data)
+      //  });
+      //  this.ready = true;
+      //}
 
     }
 
@@ -102,15 +101,18 @@ class Chat extends React.Component{
 
       let newmessage = {
           "self":true,
-          "photo":this.state.user.photo,
+          "avatar":this.props.user.photo,
           "content":this.state.value
       }
 
-      this.setState((prevState) => ({
+      //ADD_MESSAGE
+      this.props.dispatch(sendMessage(newmessage));
+      this.setState({"value":""});
+      /*this.setState((prevState) => ({
           "value":"",
           "messages": [...prevState.messages, newmessage]
         })
-      );
+      );*/
 
     }
   }
@@ -170,21 +172,28 @@ class Chat extends React.Component{
 
     }
   }
+  componentDidMount(){
+    try{
+      this.messageref.current.scrollTop = this.messageref.current.scrollHeight;
+    }catch(e){
+      
+    }
+  }
 
-
+  component
   toggleEmojis = () => {
     this.setState({
       "emojis": !this.state.emojis
     })
   }
-
   addEmoji = (emoji) => {
     this.setState({
       value: this.state.value + " " + emoji + " "
     })
   }
-  render() {
 
+
+  render() {
 
     if(this.state.colorPicker === true){
 
@@ -217,18 +226,18 @@ class Chat extends React.Component{
       <div className="chat">
             <div className="messages" ref={this.messageref}>
               {
-                this.state.messages.map( (message, index) => {
+                this.props.messages.map( (message, index) => {
 
                   //return this.message_element(message, index)
                   let message_type = "message " +
                    (message.self === true ? "message--self " : "message--other ") +
-                   ((this.state.messages.length === index+1 || message.self !== this.state.messages[index+1].self)? "message--last": "");
+                   ((this.props.messages.length === index+1 || message.self !== this.props.messages[index+1].self)? "message--last": "");
                   //console.log(message_type);
                   return(
                     <div className={message_type} key={index} >
                       <div className="message__profile" style={{"overflow":"hidden"}}>
                         <img alt="profile" style={{"height":"100%", "width":"100%", "objectFit": "cover"}}
-                        src={message.photo}/>
+                        src={message.avatar}/>
                       </div>
                       <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}
                       style={message.self === true ? colors[this.state.color] : {}}/>
@@ -300,4 +309,11 @@ class Chat extends React.Component{
 }
 
 
-export default Chat;
+function mapStateToProps({messages, user}){
+  return{
+    messages,
+    user
+  }
+}
+
+export default connect(mapStateToProps)(Chat);

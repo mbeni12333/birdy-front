@@ -1,0 +1,98 @@
+.users{
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  padding: 10px;
+  overflow-y: scroll;
+
+  &-search{
+    height: 100px;
+    //background-color: blue;
+    margin-bottom: 3rem;
+    padding: 10px;
+  }
+
+  &-grid{
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45rem, 1fr));
+    grid-gap: 1rem 1rem;
+    //overflow-y: scroll;
+
+    .card-container--users-grid{
+
+      height: 12rem;
+      //padding: 0;
+
+      .card--users-grid{
+        //background-color: red;
+        height: 12rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+          background-color: lighten($color-dark-secondary, 4);
+          cursor: pointer;
+          transition: all .1s ease-in-out;
+        }
+
+        & > *:not(:last-child){
+          margin-right: 1rem;
+        }
+
+        .user-avatar{
+          background-color: red;
+          height: 10rem;
+          width: 10rem;
+          overflow: hidden;
+          border-radius: 4rem;
+
+          img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .user-info{
+          flex: 1;
+          //background-color: green;
+          height: 100%;
+          color: $color-grey-dark;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          font-size: 2rem;
+
+          &-name{
+            color: $color-white;
+            font-weight: bold;
+            //text-decoration: underline;
+          }
+        }
+
+        .user-add{
+          width: 7rem;
+
+          &-btn{
+            padding: 1rem 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color:$color-tertiary-light;
+
+            &:hover{
+              background-color:lighten($color-tertiary-light, 3);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

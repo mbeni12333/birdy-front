@@ -6,7 +6,14 @@ let elements = [
   {"name":"Chat","icon":"fas fa-bolt", "to":"/chat"},
   {"name":"Statistics","icon":"fas fa-chart-line", "to":"/login"},
   {"name":"Events","icon":"fas fa-calendar-alt", "to":"/"},
+  {"name":"Users","icon":"fas fa-user-friends", "to":"/users"}
 ]
+
+
+const toggleNav = () => {
+  let nav = document.getElementById("mainNavigation");
+  nav.classList.toggle("active");
+}
 
 const Navelement = (props) => {
 
@@ -38,6 +45,7 @@ class Navigation extends React.Component {
 
   activate = (index) => {
     this.setState({currentElement: index});
+    toggleNav();
     //alert(this.state.currentElement);
   }
 

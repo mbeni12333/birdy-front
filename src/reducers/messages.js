@@ -1,16 +1,20 @@
-import {ADD_MESSAGE} from '../actions/messages';
+import {SEND_MESSAGE, RECEIVE_MESSAGE} from '../actions/messages';
 
 
-export function messages(state = {}, action){
+export function messages(state = [], action){
 
   switch(action.type){
 
-    case ADD_MESSAGE:
-      return {
+    case SEND_MESSAGE:
+      return [
         ...state,
-        ...action.message
-      }
-
+        action.message
+      ]
+    case RECEIVE_MESSAGE:
+      return [
+        ...state,
+        action.message
+      ]
     default:
       return state;
   }

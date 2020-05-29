@@ -57,17 +57,26 @@ const API  = {
     .catch(err => alert(err));
   },
   connectSocket(){
+
+    if(this.ws !== "" && this.ws.readyState == WebSocket.OPEN){
+      return this.ws;
+    }
+    //this.ws = new WebSocket("ws://localhost:8080/birdy/chat/10?access_token="+localStorage.getItem("token"));
     this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
     return this.ws;
   },
   getUserInitialData(){
-    return axios.get("/user")
+    return Promise.all([
+      axios.get("/user").then((res) => res.data).catch((e) => ({})),
+      axios.get("/user?all").then((res) => res.data.users).catch((e) => ({}))
+    ]).then(([data, users]) => ({data, users}))
+
   }
 
 }
 
 const SetAuthorizationToken = (token) => {
-  //axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
+  //axios.defaults.baseURL = "http://localhost:8080/birdy";
   axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
   axios.defaults.headers.common['Authorization'] = "Bearer " + token;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Profile from './profile.js';
+import Users from '../components/users'
 
 import {Route, Link, Switch, Redirect} from 'react-router-dom';
 import {API} from '../api/birdyapi.js';
@@ -32,6 +33,7 @@ const Main = () => {
         <Route exact path="/profile" component={Profile} />
         <Route path="/chat" component={Chat} />
         <Route exact path="/logout" component={Logout}/>
+        <Route exact path="/users" component={Users}/>
         <Route exact path="/" component={Home}/>
       </Switch>
     </main>
