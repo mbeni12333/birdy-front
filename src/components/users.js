@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux';
-
-
+import {addFriend, ADD_FRIEND, removeFriend, REMOVE_FRIEND, handleAddFriend, handleRemoveFriend} from "../actions/friends";
 
 class Users extends React.Component{
 
@@ -13,6 +12,27 @@ class Users extends React.Component{
       "value": ""
     }
   }
+
+
+  addFriend = (e, user) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    //alert("Try adding " + user.username);
+
+    this.props.dispatch(handleAddFriend(user));
+  }
+
+  removeFriend = (e, user) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    //alert("Try adding " + user.username);
+
+    this.props.dispatch(handleRemoveFriend(user));
+  }
+
+
 
   render(){
 
@@ -27,6 +47,8 @@ class Users extends React.Component{
 
     //console.log(users_sorted);
 
+
+
     return(
       <div className="users">
 
@@ -36,6 +58,15 @@ class Users extends React.Component{
             users_sorted.map((key, index) => {
 
               let user = users[key];
+              const isFriend = this.props.user.friends.filter(u => u.id===user.id).length > 0;
+              let button;
+
+              if(isFriend === true){
+                button = <button className="user-add-btn user-add-btn--remove" onClick={(e) => this.removeFriend(e, user)}>Remove -</button>
+              }else{
+                button = <button className="user-add-btn " onClick={(e) => this.addFriend(e, user)}>Add +</button>
+              }
+
 
               return(
                 <div key={index} className="card-container card-container--users-grid">
@@ -49,9 +80,7 @@ class Users extends React.Component{
                       <div className="user-info-bday">{user.birthday}</div>
                     </div>
                     <div className="user-add">
-                      <button className="user-add-btn">
-                        Add +
-                      </button>
+                      {button}
                     </div>
                   </div>
                 </div>

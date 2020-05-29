@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-let people = [
+
+/*let people = [
   {"pseudo": "Mounib",
    "photo" : "/images/gintoki.jpg",
    "status": "online"},
@@ -12,115 +14,66 @@ let people = [
     {"pseudo": "kelb",
      "photo" : "/images/dog.jpg",
      "status": "offline"},
-];
+];*/
 
-const Friends = () => {
 
-  const navelement = (person, index) => {
-    return(
-      <div className="nav__element" key={index}>
-        <div className="nav__element-icon">
-          <div className="nav__element-user">
-            <img src={person.photo}/>
-          </div>
-          <div className="nav__element-label-status nav__element-label-status--online"></div>
-        </div>
-        <div className="nav__element-label">
-          <span className="nav__element-label-text">{person.pseudo}</span>
-        </div>
-      </div>
-    );
-  }
 
+const navelement = (person, index) => {
   return(
-    <aside className="nav nav--right">
-      <div className="nav__content">
-        <div className="nav__desc" style={{"display":"none"}}>
-          <p>Contact</p>
-          <span>search</span>
+    <div className="nav__element" key={index}>
+      <div className="nav__element-icon">
+        <div className="nav__element-user">
+          <img src={person.avatar}/>
         </div>
-        <div className="nav__elements">
-          {people.map((person, index) => navelement(person, index))}
-        </div>
-        <div className="nav__element nav__button">
-          <div className="nav__button-icon">
-            <i className="fab fa-twitch"></i>
-          </div>
-          <div className="nav__element-label nav__element-label--white">
-            <span className="nav__element-label-text">Messages</span>
-          </div>
-        </div>
+        <div className="nav__element-label-status nav__element-label-status--online"></div>
       </div>
-    </aside>
-  )
+      <div className="nav__element-label">
+        <span className="nav__element-label-text">{person.username}</span>
+      </div>
+    </div>
+  );
 };
-/*
-<div className="nav__element">
-  <div className="nav__element-icon">
-    <div className="nav__element-user">
 
-    </div>
-  </div>
-  <div className="nav__element-label">
-    <span className="nav__element-label-text">
-      Blablabla
-    </span>
-    <div className="nav__element-label-status nav__element-label-status--online"></div>
-  </div>
-</div>
-<div className="nav__element">
-  <div className="nav__element-icon">
-    <div className="nav__element-user">
-
-    </div>
-  </div>
-  <div className="nav__element-label">
-    <span className="nav__element-label-text">
-      stuff
-    </span>
-    <div className="nav__element-label-status nav__element-label-status--offline"></div>
-  </div>
-</div>
-<div className="nav__element">
-  <div className="nav__element-icon">
-    <div className="nav__element-user">
-
-    </div>
-  </div>
-  <div className="nav__element-label">
-    <span className="nav__element-label-text">
-      Test
-    </span>
-    <div className="nav__element-label-status nav__element-label-status--online"></div>
-  </div>
-</div>
-<div className="nav__element">
-  <div className="nav__element-icon">
-    <div className="nav__element-user">
-
-    </div>
-  </div>
-  <div className="nav__element-label">
-    <span className="nav__element-label-text">
-      Mounib
-    </span>
-    <div className="nav__element-label-status nav__element-label-status--online"></div>
-  </div>
-</div>
-<div className="nav__element">
-  <div className="nav__element-icon">
-    <div className="nav__element-user">
-
-    </div>
-  </div>
-  <div className="nav__element-label">
-    <span className="nav__element-label-text">
-      LitteralyAnything
-    </span>
-    <div className="nav__element-label-status nav__element-label-status--offline"></div>
-  </div>
-</div>
+class Friends extends React.Component{
 
 
-*/
-export default Friends;
+
+  render(){
+
+    let people = this.props.user.friends || [];
+
+    return(
+      <aside className="nav nav--right">
+        <div className="nav__content">
+          <div className="nav__desc" style={{"display":"none"}}>
+            <p>Contact</p>
+            <span>search</span>
+          </div>
+          <div className="nav__elements">
+            {
+                people.map((person, index) => navelement(person, index))
+            }
+          </div>
+          <div className="nav__element nav__button">
+            <div className="nav__button-icon">
+              <i className="fab fa-twitch"></i>
+            </div>
+            <div className="nav__element-label nav__element-label--white">
+              <span className="nav__element-label-text">Messages</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    )
+  }
+};
+
+
+function mapStateToProps({user, friends}){
+  return{
+    user,
+    friends
+  }
+}
+
+export default connect(mapStateToProps)(Friends);

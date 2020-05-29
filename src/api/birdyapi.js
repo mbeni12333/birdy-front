@@ -9,6 +9,8 @@ const API  = {
   userId: "",
   user:{},
   ws: "",
+
+
   checkLoggedIn(){
     return localStorage.getItem("token") !== null;
   },
@@ -71,6 +73,29 @@ const API  = {
       axios.get("/user?all").then((res) => res.data.users).catch((e) => ({}))
     ]).then(([data, users]) => ({data, users}))
 
+  },
+  addFriend(username){
+    //alert("Entered the function " + username);
+    return axios.post("/friend", {username})
+                .then((res) => {
+                  //alert(JSON.stringify(res.data));
+                })
+                .catch((err) => {
+                  alert(JSON.stringify(err))
+                })
+  },
+  removeFriend(username){
+    //alert("Entered the function " + username);
+    return axios.delete("/friend", {
+              params: {
+                username: username
+              }})
+                .then((res) => {
+                  //alert(JSON.stringify(res.data));
+                })
+                .catch((err) => {
+                  alert(JSON.stringify(err))
+                })
   }
 
 }

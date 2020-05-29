@@ -43,7 +43,7 @@
         }
 
         .user-avatar{
-          background-color: red;
+          //background-color: red;
           height: 10rem;
           width: 10rem;
           overflow: hidden;
@@ -74,13 +74,17 @@
         }
 
         .user-add{
-          width: 7rem;
+          width: 10rem;
+          text-align: center;
 
           &-btn{
             padding: 1rem 1rem;
+            width: 100%;
             color: white;
+            font-weight: bold;
             display: flex;
             align-items: center;
+            justify-content: center;
             border-radius: 5px;
             border: none;
             outline: none;
@@ -89,6 +93,14 @@
             &:hover{
               background-color:lighten($color-tertiary-light, 3);
               cursor: pointer;
+            }
+
+            &--remove{
+              background-color:#ea4335;
+
+              &:hover{
+                background-color:lighten(#ea4335, 3);
+              }
             }
           }
         }

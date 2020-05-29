@@ -1264,7 +1264,6 @@ a, a:focus, a:active, a:visited {
         .users-grid .card-container--users-grid .card--users-grid > *:not(:last-child) {
           margin-right: 1rem; }
         .users-grid .card-container--users-grid .card--users-grid .user-avatar {
-          background-color: red;
           height: 10rem;
           width: 10rem;
           overflow: hidden;
@@ -1285,12 +1284,16 @@ a, a:focus, a:active, a:visited {
             color: #fff;
             font-weight: bold; }
         .users-grid .card-container--users-grid .card--users-grid .user-add {
-          width: 7rem; }
+          width: 10rem;
+          text-align: center; }
           .users-grid .card-container--users-grid .card--users-grid .user-add-btn {
             padding: 1rem 1rem;
+            width: 100%;
             color: white;
+            font-weight: bold;
             display: flex;
             align-items: center;
+            justify-content: center;
             border-radius: 5px;
             border: none;
             outline: none;
@@ -1298,6 +1301,10 @@ a, a:focus, a:active, a:visited {
             .users-grid .card-container--users-grid .card--users-grid .user-add-btn:hover {
               background-color: #389fff;
               cursor: pointer; }
+            .users-grid .card-container--users-grid .card--users-grid .user-add-btn--remove {
+              background-color: #ea4335; }
+              .users-grid .card-container--users-grid .card--users-grid .user-add-btn--remove:hover {
+                background-color: #eb5043; }
 
 .row {
   max-width: 114rem;
