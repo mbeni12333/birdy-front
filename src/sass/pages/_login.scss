@@ -12,7 +12,7 @@
   }
 
   &__header{
-      background-color: black;
+    background-color: black;
     height: 100px;
     width: 100%;
     position: absolute;
@@ -32,7 +32,8 @@
 
         &--1{
           order: 2;
-          //flex:1;
+          flex:1;
+          //overflow: visible;
         }
         &--2{
           //min-height: 80vh;
@@ -45,7 +46,7 @@
 
       overflow: hidden;
       display: flex;
-      align-items: center;
+
       justify-content: center;
       position: relative;
 
@@ -55,20 +56,24 @@
         background-image: url("images/animation.svg");
         background-repeat: no-repeat;
         background-position: -50px -100px;
+        align-items: center;
+
+        flex-direction: column;
+
         flex:1;
         .logobox{
           position: absolute;
           display: flex;
           align-items: center;
           justify-content: space-around;
-          width: 150px;
-          top: 20px;
-          left: 20px;
+          width: 15rem;
+          top: 2rem;
+          left: 2rem;
           i{
             background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
             -webkit-background-clip: text;
             color: transparent;
-            font-size: 45px;
+            font-size: 4.5rem;
           }
           h3{
             color: $color-white;
@@ -78,40 +83,50 @@
       }
       &--2{
         //background-color: $color-primary;
+        //flex: 1;
+        align-items: center;
+        justify-content: center;
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-        min-width: 350px;
+        min-width: 35rem;
         @media (min-width: 1050px){
             flex:1;
         }
 
       }
       &-card{
+        //flex: 1;
+        display: flex;
+
+        //align-items: center;
+        justify-content: center;
         &--1{
           max-width: 80%;
-          padding-top: 50px;
-          display: flex;
+          padding-top: 3rem;
           flex-direction: column;
-          align-items: center;
+          //justify-content: space-around;
           @media (max-width: 1050px){
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 1rem;
+            padding-right: 1rem;
             max-width: 100%;
 
           }
         }
         flex: 1;
-        max-width: 500px;
+        max-width: 60rem;
         .presentation{
           color: $color-white;
+          flex: 1;
           text-align: center;
           display: flex;
           flex-direction: column;
-          justify-content: space-around;
-          max-width: 600px;
+          align-items: center;
+          justify-content: center;
+          //justify-content: space-around;
+          max-width: 70rem;
           &__title{
             font-size: 6rem;
             position: relative;
-            margin-bottom: 5rem;
+            margin-bottom: 2rem;
             &::after{
               content: "";
               width: 15%;
@@ -125,29 +140,30 @@
           }
 
           &__description{
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
             border-left: 5px solid;
             text-align: left;
-            padding: 20px 30px;
-            line-height: 24px;
+            padding: 2rem 3rem;
+            line-height: 2.4rem;
           }
 
           &__features{
-            margin-top: 30px;
+            //margin-top: 1rem;
             display: flex;
             justify-content: space-around;
             list-style: none;
 
             & > :not(:last-child){
-              margin-right: 10px;
+              margin-right: 1rem;
             }
 
             @media (max-width: 1050px){
               flex-direction: column;
+              width: 100%;
 
               & > :not(:last-child){
                 margin-right: 0;
-                margin-bottom: 20px;
+                margin-bottom: 2rem;
               }
             }
 
@@ -183,32 +199,36 @@
         }
         .login-form{
           //background-color: blue;
+          min-width: 35rem;
+          max-width: 80rem;
+          flex:1;
           color: $color-white;
           display: flex;
           flex-direction: column;
           text-align: center;
-          justify-content: space-around;
+          //align-items: center;
+          justify-content: center;
           &__title{
-            font-size: 30px;
+            font-size: 4rem;
             font-weight: 400;
             color: $color-white;
-            margin-bottom: 40px;
+            margin-bottom: 2rem;
           }
           &__name{
             display: flex;
             justify-content: space-between;
 
             & > :First-child{
-              margin-right: 10px;
+              margin-right: 1rem;
             }
           }
           .field{
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
           }
           &__button{
-            margin-top: 20px;
-            margin-bottom: 10px;
-            height: 64px;
+            //margin-top: 2rem;
+            margin-bottom: 1rem;
+            height: 6.4rem;
             font-weight: 600;
           }
           &__links{
@@ -246,7 +266,7 @@
       list-style: none;
       display: flex;
       justify-content: space-between;
-      max-width: 350px;
+      max-width: 35rem;
       margin-left: auto;
       margin-right: auto;
       flex: 1;
@@ -256,7 +276,7 @@
       }
     }
     &-love{
-      font-size: 1.6rem;
+      font-size: 1.7rem;
 
       &-heart{
         color: red;

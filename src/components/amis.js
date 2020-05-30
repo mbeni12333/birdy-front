@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Amis = () => {
+const Amis = (props) => {
+
+
+    const {friends} = props
+
     return(
 
       <div className="card-container card-container--amis">
@@ -10,14 +14,16 @@ const Amis = () => {
             <h3>Amis</h3>
           </div>
           <div className="pelicule">
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
-            <div className="pelicule-amis"></div>
+            {
+              friends.slice(0, 9).map(user => {
+                return(
+                  <div className="pelicule-amis">
+                    <img src={user.avatar} />
+                    <div className="pelicule-amis-info">{user.username}</div>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>

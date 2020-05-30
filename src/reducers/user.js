@@ -1,4 +1,4 @@
-import {GET_USER_INITIAL_DATA} from '../actions/user';
+import {GET_USER_INITIAL_DATA, LOGOUT} from '../actions/user';
 import {ADD_FRIEND, REMOVE_FRIEND} from '../actions/friends';
 
 export function user(state = {}, action){
@@ -19,6 +19,11 @@ export function user(state = {}, action){
       return{
         ...state,
         friends: state.friends.filter((user) => user.id !== action.user.id)
+      }
+
+    case LOGOUT:
+      return{
+
       }
     default:
       return state;

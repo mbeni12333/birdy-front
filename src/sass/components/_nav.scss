@@ -11,6 +11,7 @@
 
   position: relative;
 
+
   &--left{
     //box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.3);
     //filter: drop-shadow(1px 0 3px rgba(0, 0, 0, 0.3));
@@ -56,8 +57,10 @@
   &--right{
     //box-shadow: $shadow;
 
-    @media (max-width:1000px){
-      display: none;
+    @media (max-width: 1300px) and (min-width: 1000px){
+      &__content{
+        width: 8.4rem;
+      }
     }
   }
 
@@ -66,15 +69,15 @@
     //height: 64px;
     background-image: linear-gradient(to right, #9c27b0, darken(#E1BEE7, 30));
 
-  /* my code is shitty as fuck, i hope i can clean it some day*/
+  /* my code is shitty as hell, i hope i can clean it some day*/
     &-icon{
-      font-size: 30px;
+      font-size: 3rem;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 64px;
-      height: 64px;
+      width: 6.4rem;
+      height: 6.4rem;
     }
 
   }
@@ -85,12 +88,13 @@
     width: 320px;
 
     @media (max-width: 1300px) and (min-width: 1000px){
-      width: 64px;
+      width: 6.4rem;
     }
     display: flex;
     flex-direction: column;
     position: fixed;
     top:60px;
+
   }
 
   &__desc{
@@ -102,12 +106,18 @@
   &__elements{
     display: flex;
     flex: 1;
-    //overflow-y: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     flex-direction: column;
+    scrollbar-color: $color-dark-secondary $color-dark-secondary;
+
+    &:hover{
+      scrollbar-color: $color-dark-4 $color-dark-secondary;
+    }
   }
   &__element{
-    height: 64px;
-    width: 100%;
+    height: 7.4rem;
+    //width: 100%;
     display: flex;
     padding:5px 10px;
 
@@ -148,13 +158,13 @@
         //background-color: orange;
       }
       &-status{
-        height: 18px;
-        width: 18px;
+        height: 2rem;
+        width: 2rem;
         border-radius: 50%;
         border: 3px solid $color-dark-primary;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: -.5rem;
+        right: -.5rem;
 
         &--online{
           background-color: green;
@@ -185,13 +195,13 @@
     &-icon{
       //background-color: orange;
       display: flex;
-      height: 54px;
+      height: 5.4rem;
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 54px;
+      width: 5.4rem;
       color: #cbcdde;
-      font-size: 24px;
+      font-size: 2.4rem;
 
       &--selected{
         color: $color-primary-dark;

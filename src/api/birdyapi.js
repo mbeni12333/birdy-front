@@ -19,7 +19,7 @@ const API  = {
       //console.log("request is : " , req);
       axios.post("/auth", req)
       .then(res => {
-        alert(JSON.stringify(res.data));
+        console.log(JSON.stringify(res.data));
         if(res.data.status !== "KO"){
           //this.isLoggedIn = true;
           //this.token = res.data.token;
@@ -56,7 +56,7 @@ const API  = {
         //this.isLoggedIn = false;
         callback();
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
   },
   connectSocket(){
 
@@ -69,9 +69,14 @@ const API  = {
   },
   getUserInitialData(){
     return Promise.all([
-      axios.get("/user").then((res) => res.data).catch((e) => ({})),
-      axios.get("/user?all").then((res) => res.data.users).catch((e) => ({}))
+      axios.get("/user").then((res) => res.data),
+      axios.get("/user?all").then((res) => res.data.users)
     ]).then(([data, users]) => ({data, users}))
+      .catch((e) => {
+        //alert("Error getinitialdata")
+        localStorage.removeItem("token");
+        delete axios.defaults.headers.common["Authorization"];
+      })
 
   },
   addFriend(username){
@@ -100,6 +105,10 @@ const API  = {
 
 }
 
+const UnsetAutorozationToken = () => {
+  localStorage.removeItem("token");
+  delete axios.defaults.headers.common["Authorization"];
+}
 const SetAuthorizationToken = (token) => {
   //axios.defaults.baseURL = "http://localhost:8080/birdy";
   axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
@@ -117,4 +126,4 @@ const formDataToJSON = (formElement) => {
   return convertedJSON;
 }
 
-export {API, formDataToJSON, SetAuthorizationToken};
+export {API, formDataToJSON, SetAuthorizationToken, UnsetAutorozationToken};

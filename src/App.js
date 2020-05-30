@@ -3,7 +3,7 @@ import Header from './components/header.js';
 import Main from './components/main.js';
 import Friends from './components/Friends.js';
 import Navigation from './components/navigation.js';
-import {API} from './api/birdyapi.js';
+import {API, SetAuthorizationToken} from './api/birdyapi.js';
 import {connect} from 'react-redux'
 import {handleInitialData} from './actions/shared.js';
 
@@ -39,27 +39,29 @@ const AuthRoute = ({component:Component, ...rest}) => {
   );
 };
 
-const Mainlayout = () => {
-  return (
-    <React.Fragment>
-      <Header />
+class Mainlayout extends React.Component {
 
-      <div className="main_container">
-          <Navigation />
-          <Main />
-          <Friends />
-      </div>
-    </React.Fragment>
-  );
-};
-
-class App extends React.Component{
-
-
-  componentDidMount(){
-      this.props.dispatch(handleInitialData());
+  componentWillMount(){
+    this.props.dispatch(handleInitialData());
   }
 
+  render(){
+    return (
+      <React.Fragment>
+        <Header />
+        <div className="main_container">
+            <Navigation />
+            <Main />
+            <Friends />
+        </div>
+      </React.Fragment>
+    );
+  }
+};
+
+const MainLayoutConnected = connect()(Mainlayout);
+
+class App extends React.Component{
 
   render(){
     return (
@@ -67,7 +69,7 @@ class App extends React.Component{
         <Router>
           <Switch>
               <Route component={Login} path="/login"/>
-              <AuthRoute component={Mainlayout} path = "/"/>
+              <AuthRoute component={MainLayoutConnected} path = "/"/>
           </Switch>
         </Router>
       </div>
@@ -76,5 +78,10 @@ class App extends React.Component{
 }
 
 
+function mapStateToProps({user}){
+  return{
+    user
+  }
+}
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);

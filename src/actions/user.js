@@ -15,3 +15,9 @@ export function setUserToken(token){
     token
   }
 }
+
+export function logout(){
+  return{
+    type: LOGOUT
+  }
+}

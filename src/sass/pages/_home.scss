@@ -22,8 +22,8 @@
 
 
   @media (max-width: 1000px){
-    flex-direction: column;
-    align-items: stretch;
+    //flex-direction: column;
+    //align-items: stretch;
 
 
   }
@@ -38,13 +38,13 @@
     //margin-right: auto;
     flex:1;
     height: 100%;
-    margin-top: 64px;
+    //margin-top: 64px;
+    padding-top: 64px;
     overflow-y: hidden;
     overflow-x: hidden;
 
     .main{
       overflow-y: scroll;
-      scrollbar-width: thin;
       overflow-x: hidden;
       height: 100%;
       padding: 10px;
@@ -52,7 +52,12 @@
       @media(max-width:1000px){
         padding: 0;
       }
+
+      //&:hover{
+      //  overflow-y: scroll;
+      //}
     }
+
   }
 
   .nav{
@@ -67,12 +72,11 @@
       }
     }*/
     @media (max-width: 1300px) and (min-width: 1000px){
-      width: 64px;
+      width: 7.4rem;
 
 
       &__elements{
-        width: 64px;
-        overflow: hidden;
+        width: 7.4rem;
       }
       &__element{
         //padding: 10px 10px;
@@ -96,32 +100,36 @@
       }
       @media (max-width: 1000px){
         width: 100%;
-        height: 64px;
+        height: 7.4rem;
       }
     }
     &--right{
       //right: 0;
-      @media (max-width: 1500px){
-          width: 64px;
+      @media (max-width: 1300px){
+          width: 8.4rem;
 
           .nav__button{
             .nav__element-label{
               display: none;
             }
           }
+          .nav__content{
+            width: 8.4rem;
+          }
           .nav__elements{
-            width: 64px;
-            overflow: hidden;
+            width: 8.4rem;
+            //overflow: hidden;
 
             .nav__element{
-              padding: 10px 10px;
+              padding: 1rem 1rem;
+              width: 7.4rem;
               &-label{
                 display: none;
               }
               &-icon{
                 flex:1;
-                height: 100%;
-                width: 100%;
+                height: 5.4rem;
+                width: 5.4rem;
               }
             }
           }
@@ -130,7 +138,7 @@
 
       }
       @media (max-width: 1000px){
-        width: 100%;
+        //width: 100%;
       }
       //height: 100%;
       //width: 64px;

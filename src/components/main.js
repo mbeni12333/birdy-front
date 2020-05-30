@@ -6,15 +6,19 @@ import {Route, Link, Switch, Redirect} from 'react-router-dom';
 import {API} from '../api/birdyapi.js';
 import Chat from './Chat.js';
 import Home from '../components/home.js';
+import {connect} from 'react-redux';
+import {logout} from "../actions/user";
+import ReactDOM from 'react-dom';
 
-
-const Logout = () => {
+const Logout = (props) => {
   return(
-    <button className="btn btn--white" onClick={() => {
+    <button className="btn btn--white" onClick={(e) => {
       API.logout(() => {
         //alert("redirecting ....");
         //return <Redirect to="/login" />;
-        window.location.href = '/login'
+        props.dispatch(logout());
+        ReactDOM.render(<Redirect to="/login" />);
+        //window.location.href = '/login'
       });
     }} style={{
       position:"absolute",
@@ -25,14 +29,15 @@ const Logout = () => {
   )
 }
 
-
-const Main = () => {
+const Main = (props) => {
   return(
     <main>
       <Switch>
         <Route exact path="/profile" component={Profile} />
         <Route path="/chat" component={Chat} />
-        <Route exact path="/logout" component={Logout}/>
+        <Route exact path="/logout">
+          <Logout dispatch={props.dispatch} />
+        </Route>
         <Route exact path="/users" component={Users}/>
         <Route exact path="/" component={Home}/>
       </Switch>
@@ -40,4 +45,5 @@ const Main = () => {
   )
 }
 
-export default Main;
+
+export default connect()(Main);

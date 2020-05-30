@@ -5,7 +5,8 @@
   padding: 0;
   box-sizing: inherit;
   font-family: inherit;
-
+  scrollbar-width: thin;
+  scrollbar-color: $color-dark-4 $color-dark-secondary;
 }
 
 html{
@@ -19,6 +20,7 @@ body{
     overflow-x: hidden;
     overflow: hidden;
     color: $color-white;
+    //scrollbar-width: none;
 }
 
 .root{
@@ -41,24 +43,31 @@ a{
 }
 
 
-::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 8px;
 }
-::-webkit-scrollbar-button {
+*::-webkit-scrollbar-button {
     width: 8px;
     height:5px;
 }
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background:$color-dark-secondary;
     border: thin solid $color-dark-secondary;
     box-shadow: 0px 0px 3px #dfdfdf inset;
     border-radius:10px;
 }
-::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background:$color-dark-tertiary;
     border: thin solid gray;
     border-radius:10px;
 }
-::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
     background:lighten($color-dark-tertiary, 5);
 }
+/*::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar {
+  display: none;
+}*/

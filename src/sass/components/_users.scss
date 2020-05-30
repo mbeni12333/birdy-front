@@ -16,7 +16,7 @@
   &-grid{
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
     grid-gap: 1rem 1rem;
     //overflow-y: scroll;
 
@@ -88,18 +88,18 @@
             border-radius: 5px;
             border: none;
             outline: none;
-            background-color:$color-tertiary-light;
+            background-color: $color-primary-dark;//#303F9F;
 
             &:hover{
-              background-color:lighten($color-tertiary-light, 3);
+              background-color:lighten($color-primary-dark, 3);//lighten(#303F9F, 3);
               cursor: pointer;
             }
 
             &--remove{
-              background-color:#ea4335;
+              background-color: $color-dark-4;//#d32f2f;//#ea4335;
 
               &:hover{
-                background-color:lighten(#ea4335, 3);
+                background-color:lighten($color-dark-4, 3);//lighten(#d32f2f, 3); //lighten(#ea4335, 3);
               }
             }
           }

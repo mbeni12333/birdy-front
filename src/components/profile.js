@@ -5,7 +5,7 @@ import Photos from './photos.js';
 import Intro from './intro.js';
 import Amis from './amis.js';
 import AddPost from './addpost.js'
-
+import {connect} from 'react-redux'
 
 
 class Profile extends React.Component{
@@ -20,7 +20,7 @@ class Profile extends React.Component{
           <div className="content__body">
             <div className="content__body-aside content_body-aside--left">
                 <Intro/>
-                <Amis/>
+                <Amis friends={this.props.user.friends || []}/>
                 <Photos/>
             </div>
             <div className="content__body-main">
@@ -34,4 +34,11 @@ class Profile extends React.Component{
   }
 }
 
-export default Profile;
+
+function mapStateToProps({user, friends}){
+  return{
+    user,
+    friends
+  }
+}
+export default connect(mapStateToProps)(Profile);
