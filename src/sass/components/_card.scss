@@ -116,6 +116,10 @@
     //height: 800px;
     flex:1;
     //background-color: $color-white;
+
+    & > *:not(:last-child){
+      margin-bottom: 2rem;
+    }
   }
   &--amis{
     //height: 400px;
@@ -283,7 +287,7 @@
 
       transition: all .4s ease-in-out;
       box-shadow: none;
-
+      padding: 1rem 1rem 0 1rem;
       &:hover{
         //background-color: $color-grey-light-1;
         cursor: pointer;

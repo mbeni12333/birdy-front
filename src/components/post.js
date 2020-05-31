@@ -63,12 +63,24 @@ class PostElement extends React.Component {
       )
     }
 
+    const photos = post.photos.length > 0 ? (
+      <div className="post__content-body__photo">
+        {
+            post.photos.map((photo, index) => {
+              return(
+                <img key={index} src={photo} onClick={() => this.toggleActive(photo)} />
+              )
+            })
+        }
+    </div>
+  ) : ""
+
     return (
       <div className="post">
         <div className="post__aside">
           <div className="post__aside-element post__aside-element--icon"><i className="fas fa-retweet"></i></div>
           <div className="post__aside-element post__aside-element--picture">
-            <img src={post.user.profile_pic} className="ost__aside-element-picture" />
+            <img src={post.user.avatar} className="ost__aside-element-picture" />
           </div>
           <div className="post__aside-element post__aside-element--bar">
             <div className="post__aside-element-bar"></div>
@@ -86,17 +98,7 @@ class PostElement extends React.Component {
           </div>
           <div className="post__content-body">
             <div className="post__content-body__text">{post.content}</div>
-            <div className="post__content-body__photo">
-
-
-              {
-                  post.photos.map((photo, index) => {
-                    return(
-                      <img key={index} src={photo} onClick={() => this.toggleActive(photo)} />
-                    )
-                  })
-              }
-            </div>
+            {photos}
           </div>
 
         </div>

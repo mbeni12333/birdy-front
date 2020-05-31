@@ -3,7 +3,7 @@ import Post from './post.js';
 
 import image from '../images/graphql.png';
 import tests from '../images/test.jpeg';
-
+import {connect} from "react-redux";
 
 let posts = [
   {
@@ -51,23 +51,37 @@ let posts = [
   }
 ];
 
-const Timeline = () => {
+const Timeline = (props) => {
+
+    const posts = [...props.posts].reverse()
+
     return(
 
         <div className="card-container card-container--timeline">
-          {posts.map((post, index) => {
-            return <Post
-                    user={post.user}
-                    photos={post.photos}
-                    content={post.content}
-                    timestamp={post.timestamp}
-                    like={post.like}
-                    comment={post.comment}
-                    share={post.share}
-                    key={index}/>
-          })}
+          {
+            posts.map((post, index) => {
+              return <Post
+                      user={props.friends[post.author_id]}
+                      photos={post.photos || []}
+                      content={post.content}
+                      timestamp={post.timestamp}
+                      like={post.like}
+                      comment={post.comment}
+                      share={post.share}
+                      key={index}/>
+              })
+          }
         </div>
     )
 }
 
-export default Timeline;
+
+function mapStateToProps({user, friends, posts}){
+  return{
+    user,
+    friends,
+    posts
+  }
+}
+
+export default connect(mapStateToProps)(Timeline);

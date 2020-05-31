@@ -1,7 +1,7 @@
 import React from 'react'
 import {formDataToJSON} from '../api/birdyapi'
 import {connect} from 'react-redux'
-import {addPost} from '../actions/posts'
+import {addPost, handleAddPost} from '../actions/posts'
 
 class AddPost extends React.Component{
 
@@ -28,8 +28,10 @@ class AddPost extends React.Component{
       content: this.state.post_content
     }
     //console.log("test");
-    this.props.dispatch(addPost(data));
-    this.setState({post_content:"", active:false})
+    this.props.dispatch(handleAddPost(data, () => {
+      this.setState({post_content:"", active:false})
+    }))
+
   }
 
   render(){

@@ -70,10 +70,11 @@ const API  = {
   getUserInitialData(){
     return Promise.all([
       axios.get("/user").then((res) => res.data),
-      axios.get("/user?all").then((res) => res.data.users)
-    ]).then(([data, users]) => ({data, users}))
+      axios.get("/user?all").then((res) => res.data.users),
+      this.getPost({"type":"profile"}).then((res) => res.posts).catch((e) => alert("post get error, " + e))
+    ]).then(([data, users, posts]) => ({data, users, posts}))
       .catch((e) => {
-        //alert("Error getinitialdata")
+        //alert("Error getinitialdata " + JSON.stringify(e))
         localStorage.removeItem("token");
         delete axios.defaults.headers.common["Authorization"];
       })
@@ -101,7 +102,19 @@ const API  = {
                 .catch((err) => {
                   alert(JSON.stringify(err))
                 })
-  }
+  },
+  addPost(post){
+    return axios.post("/post", post)
+            .then((res) => res.data)
+  },
+  getPost(req){
+    return axios.get("/post", {
+      params:{
+        "type":req.type
+      }
+    })
+            .then((res) => res.data)
+  },
 
 }
 
