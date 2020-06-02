@@ -1,6 +1,7 @@
 import {API} from "../api/birdyapi"
 
 export const ADD_POST = "ADD_POST";
+export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST = "RECEIVE_POST";
 export const GET_POSTS_INTIAL_DATA = "GET_POSTS_INTIAL_DATA";
 
@@ -16,6 +17,15 @@ export function handleAddPost(req, callback){
   }
 }
 
+export function handleRemovePost(post_id){
+  return (dispatch) => {
+    return API.removePost(post_id)
+              .then((res) => {
+                //alert(JSON.stringify(req))
+                dispatch(removePost(post_id))
+              });
+  }
+}
 export function getInitialPosts(posts){
   return {
     type: GET_POSTS_INTIAL_DATA,
@@ -31,6 +41,14 @@ export function addPost(post){
       ...post,
       author_id:219
     }
+  }
+}
+
+export function removePost(post_id){
+  //alert("addpost + " + JSON.stringify(post))
+  return {
+    type: REMOVE_POST,
+    post_id
   }
 }
 

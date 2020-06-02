@@ -2,8 +2,8 @@ import React from 'react';
 import image from '../images/graphql.png';
 import Fullsc from '../components/fullsc.js';
 import ReactDOM from 'react-dom';
-
-
+import {connect} from 'react-redux';
+import {handleRemovePost} from "../actions/posts";
 
 class PostElement extends React.Component {
 
@@ -17,6 +17,8 @@ class PostElement extends React.Component {
       lastPhoto: ""
     }
   }
+
+
 
 
   toggleActive = (photo) => {
@@ -63,7 +65,13 @@ class PostElement extends React.Component {
       )
     }
 
-    const photos = post.photos.length > 0 ? (
+
+    /*Get the photos from post, And try from the content too*/
+    var matches = post.content.match(/\bhttps?:\/\/\S+/gi);
+    matches = matches !== null ? matches : []
+
+    const content_without_links = post.content.replace(/\bhttps?:\/\/\S+/gi, "")
+    const photos = ((post.photos.length > 0) ||  (matches.length > 0)) ? (
       <div className="post__content-body__photo">
         {
             post.photos.map((photo, index) => {
@@ -72,8 +80,37 @@ class PostElement extends React.Component {
               )
             })
         }
+
+        {
+            matches.map((photo, index) => {
+              return(
+                <img key={index} src={photo} onClick={() => this.toggleActive(photo)} />
+              )
+            })
+        }
     </div>
   ) : ""
+
+    const remove = post.owned === true ? <div className="post__content-header-remove" onClick={(e) => this.props.onRemove(e)}>
+                                            <i className="fas fa-times-circle"></i>
+                                          </div> : ""
+
+    var date = 0
+
+    if(post.id){
+      const timestamp = post.id.substring(0,8)
+      const date = Math.abs((new Date()) - (new Date( parseInt( timestamp, 16 ) * 1000 )))
+    }
+    //console.log("date = " + date)
+    var time = "now";
+
+    if(date/1000/3600/24 >= 1){
+      time = Math.floor(date/1000/3600/24) + "d"
+    }else if (date/1000/3600 >= 1){
+      time = Math.floor(date/1000/3600) + "h"
+    }else if (date/1000/60 >= 1){
+      time = Math.floor(date/1000/60) + "m"
+    }
 
     return (
       <div className="post">
@@ -89,15 +126,16 @@ class PostElement extends React.Component {
         <div className="post__content">
           <div className="post__content-header">
             <p>Mounib shared</p>
+            {remove}
           </div>
           <div className="post__content-person">
             <div className="post__content-person-name"><b>{post.user.username}</b></div>
-            <div className="post__content-person-link"><i>{post.user.link}</i></div>
-            <div className="post__content-person-time"><i>{post.timestamp}</i></div>
+            <div className="post__content-person-link"><i>@{post.user.username}</i></div>
+            <div className="post__content-person-time"><i>{time}</i></div>
 
           </div>
           <div className="post__content-body">
-            <div className="post__content-body__text">{post.content}</div>
+            <div className="post__content-body__text">{content_without_links}</div>
             {photos}
           </div>
 
@@ -111,6 +149,15 @@ class PostElement extends React.Component {
 
 class Post extends React.Component{
 
+
+  removePost = (e) => {
+    //alert("Trying to remove a post " + this.props.id);
+
+    this.props.dispatch(handleRemovePost(this.props.id))
+  }
+
+
+
   render(){
 
     var nb_like = this.props.like ? this.props.like : 0;
@@ -121,7 +168,7 @@ class Post extends React.Component{
       <div className="card-container card-container--post">
         <div className="card card--post">
           <div className="post-container">
-              <PostElement {...this.props}/>
+              <PostElement {...this.props} onRemove={(e) => this.removePost(e)}/>
           </div>
           <div className="post__content-footer">
             <div className="post__footer-button">
@@ -164,4 +211,4 @@ class Post extends React.Component{
               </div>
             </div>
             -->*/
-export default Post;
+export default connect()(Post);

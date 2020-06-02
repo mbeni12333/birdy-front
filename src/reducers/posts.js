@@ -1,4 +1,4 @@
-import {ADD_POST, GET_POSTS_INTIAL_DATA} from '../actions/posts';
+import {ADD_POST, GET_POSTS_INTIAL_DATA, REMOVE_POST} from '../actions/posts';
 
 
 export function posts(state = [], action){
@@ -10,6 +10,10 @@ export function posts(state = [], action){
         ...state,
         action.post
       ]
+    case REMOVE_POST:
+    //console.log(state.filter((el) => el._id !== action.post_id))
+      return state.filter((el) => el._id !== action.post_id)
+      
     case GET_POSTS_INTIAL_DATA:
         return [
           ...action.posts,

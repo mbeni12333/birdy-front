@@ -115,6 +115,13 @@ const API  = {
     })
             .then((res) => res.data)
   },
+  removePost(post_id){
+    return axios.delete("/post", {
+                  params: {
+                    post_id
+                  }
+          }).then((res) => res)
+  }
 
 }
 

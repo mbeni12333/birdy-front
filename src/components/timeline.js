@@ -54,13 +54,15 @@ let posts = [
 const Timeline = (props) => {
 
     const posts = [...props.posts].reverse()
-
+    //console.log(posts)
     return(
 
         <div className="card-container card-container--timeline">
           {
             posts.map((post, index) => {
+              console.log(post)
               return <Post
+                      id={post._id}
                       user={props.friends[post.author_id]}
                       photos={post.photos || []}
                       content={post.content}
@@ -68,7 +70,8 @@ const Timeline = (props) => {
                       like={post.like}
                       comment={post.comment}
                       share={post.share}
-                      key={index}/>
+                      key={index}
+                      owned={props.friends[post.author_id].username === props.user.username}/>
               })
           }
         </div>

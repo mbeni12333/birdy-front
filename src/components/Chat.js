@@ -10,9 +10,11 @@ import {SEND_MESSAGE, RECEIVE_MESSAGE, sendMessage, receiveMessage} from '../act
 
 
 const sout = new Audio()
-sout.src = "/audio/not.mp3"
+sout.src = "/audio/6ouz.mp3"
 
 const playsout = () => {
+  //const isFocused = document.getElementById("message_input").hasFocus
+
   sout.play();
 }
 
@@ -44,7 +46,7 @@ class Chat extends React.Component{
 
     this.messageref = React.createRef();
     this.state = {
-      "color":8,
+      "color": localStorage.getItem("color") || 7,
       "colorPicker":false,
       "emojis": false,
       //"messages": [],
@@ -176,7 +178,7 @@ class Chat extends React.Component{
     try{
       this.messageref.current.scrollTop = this.messageref.current.scrollHeight;
     }catch(e){
-      
+
     }
   }
 
@@ -210,7 +212,10 @@ class Chat extends React.Component{
                     Object.keys(colors).map((index, key) => {
                       return(
                         <div key={key} className="colorPicker__color" style={colors[index]}
-                        onClick={e => this.setState({colorPicker:false, color:index})}></div>
+                        onClick={e => {
+                          this.setState({colorPicker:false, color:index})
+                          localStorage.setItem("color", index)
+                        }}></div>
                       )
                     })
                   }
@@ -296,7 +301,7 @@ class Chat extends React.Component{
                     if(this.state.emojis === true){
                       this.setState({emojis: false})
                     }
-                  }}></textarea>
+                  }} id="message_input"></textarea>
               </div>
 
               <div className="send">
