@@ -13,9 +13,10 @@ const sout = new Audio()
 sout.src = "/audio/6ouz.mp3"
 
 const playsout = () => {
-  //const isFocused = document.getElementById("message_input").hasFocus
+  const elem = document.getElementById("message_input")
 
-  sout.play();
+  if(document.activeElement !== elem)
+    sout.play();
 }
 
 const colors = {
