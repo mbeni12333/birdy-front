@@ -28,7 +28,7 @@ class AddPost extends React.Component{
       content: this.state.post_content
     }
     //console.log("test");
-    this.props.dispatch(handleAddPost(data, () => {
+    this.props.dispatch(handleAddPost(data, this.props.user.id, () => {
       this.setState({post_content:"", active:false})
     }))
 
@@ -53,8 +53,8 @@ class AddPost extends React.Component{
                   </div>
 
                   <div className="addpost__user">
-                    <img src="./images/gintoki.jpg"/>
-                    <span>Mounib Benimam</span>
+                    <img src={this.props.user.avatar}/>
+                    <span>{this.props.user.username}</span>
                   </div>
 
                   <textarea name="content" className="addpost__textarea" placeholder="Que voulez-vous dire ?"
@@ -64,9 +64,9 @@ class AddPost extends React.Component{
                   </textarea>
 
                   <div className="addpost__toolblock">
-                    <button><i className="far fa-images" style={{"color":"#45bd62"}}></i><span>Photo/video</span></button>
-                    <button><i className="fas fa-user-tag" style={{"color":"#1877f2"}}></i><span>Identifier des amis</span></button>
-                    <button><i className="far fa-laugh-beam" style={{"color": "#fd7e14"}}></i><span>Humeur</span></button>
+                    <button onClick={(e) => e.preventDefault()}><i className="far fa-images" style={{"color":"#45bd62"}}></i><span>Photo/video</span></button>
+                    <button onClick={(e) => e.preventDefault()}><i className="fas fa-user-tag" style={{"color":"#1877f2"}}></i><span>Identifier des amis</span></button>
+                    <button onClick={(e) => e.preventDefault()}><i className="far fa-laugh-beam" style={{"color": "#fd7e14"}}></i><span>Humeur</span></button>
                   </div>
 
                   <input type="submit" disabled={this.state.post_content === "" }
@@ -85,7 +85,7 @@ class AddPost extends React.Component{
         <div className="card">
           <div className="addpost__input">
             <div className="user-icon">
-              <img src="/images/gintoki.jpg"/>
+              <img src={this.props.user.avatar}/>
             </div>
             <button className="input__btn" onClick={(e) => this.toggleActive(e)}>
               Que voulez-vous dire ?
@@ -106,5 +106,11 @@ class AddPost extends React.Component{
 }
 
 
+function mapStateToProps({user}){
+  return {
+    user
+  }
+}
 
-export default connect()(AddPost);
+
+export default connect(mapStateToProps)(AddPost);

@@ -10,7 +10,7 @@ import {SEND_MESSAGE, RECEIVE_MESSAGE, sendMessage, receiveMessage} from '../act
 
 
 const sout = new Audio()
-sout.src = "/audio/6ouz.mp3"
+sout.src = "/audio/not.mp3"
 
 const playsout = () => {
   const elem = document.getElementById("message_input")
@@ -35,7 +35,6 @@ const colors = {
   13: {"backgroundImage":"linear-gradient(170deg, #FF5B94, #8441A4)"},
   14: {"backgroundImage":"linear-gradient(170deg, #F869D5, #5650DE)"},
   15: {"backgroundImage":"linear-gradient(170deg, #F00B51, #7366FF)"},
-
   16: {"backgroundImage":"linear-gradient(170deg, #6454F0 0%, #7D77FF 10%, #2E8DE1 20%, #3499FF 30%, #99D65A 40%, #FFCF18 50%, #FFA62E 60%, #FF8818 70%, #EA4D2C 80%, #F00B51 90%, #F00B51 100%)"},
   17: {"backgroundImage":"linear-gradient(to bottom, #16C9F2, #D72063)"},
   18: {"backgroundImage":"linear-gradient(to bottom, #085ECD, #0869D1, #FF6E01, #FE1312)"},
@@ -50,7 +49,6 @@ class Chat extends React.Component{
       "color": localStorage.getItem("color") || 7,
       "colorPicker":false,
       "emojis": false,
-      //"messages": [],
       "value": "",
     }
 
@@ -103,13 +101,14 @@ class Chat extends React.Component{
       this.ws.send(this.state.value);
 
       let newmessage = {
-          "self":true,
-          "avatar":this.props.user.photo,
+          //"self":true,
+          //"avatar":this.props.user.photo,
+
           "content":this.state.value
       }
 
       //ADD_MESSAGE
-      this.props.dispatch(sendMessage(newmessage));
+      this.props.dispatch(sendMessage(newmessage, this.props.user.id));
       this.setState({"value":""});
       /*this.setState((prevState) => ({
           "value":"",
@@ -235,15 +234,17 @@ class Chat extends React.Component{
                 this.props.messages.map( (message, index) => {
 
                   //return this.message_element(message, index)
+                  //console.log(this.props.messages, index+1)
                   let message_type = "message " +
-                   (message.self === true ? "message--self " : "message--other ") +
-                   ((this.props.messages.length === index+1 || message.self !== this.props.messages[index+1].self)? "message--last": "");
+                   (message.user_id === this.props.user.id ? "message--self " : "message--other ") +
+                   ((this.props.messages.length === index+1 || message.user_id !== this.props.messages[index+1].user_id)? "message--last ": "") +
+                   ((index < 1 || message.user_id !== this.props.messages[index-1].user_id)? "message--first ": "");
                   //console.log(message_type);
                   return(
                     <div className={message_type} key={index} >
                       <div className="message__profile" style={{"overflow":"hidden"}}>
                         <img alt="profile" style={{"height":"100%", "width":"100%", "objectFit": "cover"}}
-                        src={message.avatar}/>
+                        src={message.user_id && this.props.friends[message.user_id].avatar}/>
                       </div>
                       <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}
                       style={message.self === true ? colors[this.state.color] : {}}/>
@@ -315,10 +316,11 @@ class Chat extends React.Component{
 }
 
 
-function mapStateToProps({messages, user}){
+function mapStateToProps({messages, user, friends}){
   return{
     messages,
-    user
+    user,
+    friends
   }
 }
 

@@ -115,7 +115,7 @@
 
     //height: 800px;
     flex:1;
-    //background-color: $color-white;
+    justify-content: flex-start;
 
     & > *:not(:last-child){
       margin-bottom: 2rem;
@@ -326,10 +326,15 @@
             height: 100%;
             width: 128px;
             transform: translate(50%, 0);
-            background-image: url("images/gintoki.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            overflow: hidden;
+            img{
+              height: 100%;
+              width: 100%;
+              //background-image: url("images/gintoki.jpg");
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+            }
             box-shadow: $shadow;
             border-radius: 50%;
             //border: 5px solid $color-white; light mode
@@ -375,7 +380,8 @@
           margin-left: auto;
           margin-right: auto;
           display: flex;
-          text-align: center;
+          //text-align: center;
+
           align-items: center;
           @media (max-width: 1000px){
             flex: 2;
@@ -385,6 +391,10 @@
             justify-content: center;
           }
           &-link{
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
             &:first-child{
               //color: $color-black;
               color: $color-white;
@@ -393,11 +403,11 @@
             color: #d3d5db;
             flex: 1;
             border-radius: 3px;
-            display: block;
             transition: all 0.3s;
 
             &:hover{
-              background-color: $color-grey-light-1;
+              background-color: $color-dark-4;
+              cursor: pointer;
             }
           }
         }

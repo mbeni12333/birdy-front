@@ -189,10 +189,17 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        background-image: url("images/gintoki.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        overflow: hidden;
+        //background-image: url("images/gintoki.jpg");
+
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
 
       }
       &-label{

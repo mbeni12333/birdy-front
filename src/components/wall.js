@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Wall = () => {
+const Wall = (props) => {
   return(
 
       <div className="card-container ">
@@ -11,7 +11,9 @@ const Wall = () => {
             </div>
             <div className="wall__profile">
               <div className="wall__profile-container">
-                  <div className="wall__profile-picture"></div>
+                  <div className="wall__profile-picture">
+                    <img src={props.user.avatar} />
+                  </div>
               </div>
               <div className="wall__profile-container">
                 <div className="wall__profile-buttons">
@@ -31,7 +33,7 @@ const Wall = () => {
             <div className="wall__links">
               <div className="wall__links-link">Timeline</div>
               <div className="wall__links-link">About</div>
-              <div className="wall__links-link">MOUNIB</div>
+              <div className="wall__links-link"><b style={{"fontSize":"3rem", "textTransform":"capitalize"}}>{props.user.username}</b></div>
               <div className="wall__links-link">Photos</div>
               <div className="wall__links-link">Videos</div>
             </div>

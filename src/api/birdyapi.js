@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
-//axios.defaults.baseURL = "http://localhost:8080/birdy";
+//axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:8080/birdy";
 const API  = {
 
   isLoggedIn : false,
@@ -63,15 +63,15 @@ const API  = {
     if(this.ws !== "" && this.ws.readyState == WebSocket.OPEN){
       return this.ws;
     }
-    //this.ws = new WebSocket("ws://localhost:8080/birdy/chat/10?access_token="+localStorage.getItem("token"));
-    this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
+    this.ws = new WebSocket("ws://localhost:8080/birdy/chat/10?access_token="+localStorage.getItem("token"));
+    //this.ws = new WebSocket("wss://birdy-back.herokuapp.com/chat/10?access_token="+localStorage.getItem("token"));
     return this.ws;
   },
   getUserInitialData(){
     return Promise.all([
       axios.get("/user").then((res) => res.data),
       axios.get("/user?all").then((res) => res.data.users),
-      this.getPost({"type":"profile"}).then((res) => res.posts).catch((e) => alert("post get error, " + e))
+      this.getPost({"type":"home"}).then((res) => res.posts).catch((e) => alert("post get error, " + e))
     ]).then(([data, users, posts]) => ({data, users, posts}))
       .catch((e) => {
         //alert("Error getinitialdata " + JSON.stringify(e))
@@ -130,8 +130,8 @@ const UnsetAutorozationToken = () => {
   delete axios.defaults.headers.common["Authorization"];
 }
 const SetAuthorizationToken = (token) => {
-  //axios.defaults.baseURL = "http://localhost:8080/birdy";
-  axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
+  axios.defaults.baseURL = "http://localhost:8080/birdy";
+  //axios.defaults.baseURL = "https://birdy-back.herokuapp.com";
   axios.defaults.headers.common['Authorization'] = "Bearer " + token;
 }
 

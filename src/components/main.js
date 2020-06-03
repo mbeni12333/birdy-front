@@ -33,7 +33,7 @@ const Main = (props) => {
   return(
     <main>
       <Switch>
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:id" component={Profile} />
         <Route path="/chat" component={Chat} />
         <Route exact path="/logout">
           <Logout dispatch={props.dispatch} />

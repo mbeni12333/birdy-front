@@ -6,12 +6,12 @@ export const RECEIVE_POST = "RECEIVE_POST";
 export const GET_POSTS_INTIAL_DATA = "GET_POSTS_INTIAL_DATA";
 
 
-export function handleAddPost(req, callback){
+export function handleAddPost(req, user_id, callback){
   return (dispatch) => {
     return API.addPost(req)
               .then((res) => {
-                //alert(JSON.stringify(req))
-                dispatch(addPost(req))
+                //alert(JSON.stringify(res))
+                dispatch(addPost(req, res.post_id, user_id))
                 callback();
               });
   }
@@ -33,13 +33,14 @@ export function getInitialPosts(posts){
   }
 }
 
-export function addPost(post){
+export function addPost(post, _id, author_id){
   //alert("addpost + " + JSON.stringify(post))
   return {
     type: ADD_POST,
     post:{
       ...post,
-      author_id:219
+      _id,
+      author_id
     }
   }
 }

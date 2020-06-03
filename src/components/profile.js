@@ -10,22 +10,29 @@ import {connect} from 'react-redux'
 
 class Profile extends React.Component{
 
+
   render(){
+
+    const user_id = this.props.match.params.id;
+    const user = this.props.friends[user_id];
+
+    if(!user)
+      return(<div className="main"></div>)
     return(
       <div className="main">
         <div className="content">
           <div className="content__head">
-            <Wall />
+            <Wall user={user}/>
           </div>
           <div className="content__body">
             <div className="content__body-aside content_body-aside--left">
                 <Intro/>
-                <Amis friends={this.props.user.friends || []}/>
+                <Amis friends={user.friends || []}/>
                 <Photos/>
             </div>
             <div className="content__body-main">
               <AddPost />
-              <Timeline />
+              <Timeline profile={user.id}/>
             </div>
           </div>
         </div>

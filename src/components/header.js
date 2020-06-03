@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
-
+import {connect} from 'react-redux';
 import Field from './field.js';
 
 
@@ -9,7 +9,10 @@ const toggleNav = () => {
   nav.classList.toggle("active");
 }
 
-const Header = () => {
+const Header = (props) => {
+
+
+
   return(
     <header className="header">
       <div className="header__logo" onClick={() => toggleNav()}>
@@ -40,12 +43,16 @@ const Header = () => {
         </div>
       </div>
       <div className="header__user">
-        <div className="header__profile">
-          <div className="header__profile-icon"></div>
-          <div className="header__profile-label">
-            <h3>Mounib</h3>
+        <Link to={"/profile/"+props.user.id}>
+          <div className="header__profile">
+            <div className="header__profile-icon">
+              <img src={props.user.avatar} />
+            </div>
+            <div className="header__profile-label">
+              <h3>Mounib</h3>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="header__icons">
           <div className="header__icons-block">
             <i className="fas fa-user-friends"></i>
@@ -66,4 +73,10 @@ const Header = () => {
   )
 };
 
-export default Header;
+
+function mapStateToProps({user}){
+  return {
+    user
+  }
+}
+export default connect(mapStateToProps)(Header);

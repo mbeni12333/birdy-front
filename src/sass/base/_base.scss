@@ -14,6 +14,10 @@ html{
 
 }
 
+
+a{
+  color: inherit;
+}
 body{
     background-color: $color-dark-primary;
     box-sizing: border-box;

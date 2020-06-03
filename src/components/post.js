@@ -99,7 +99,7 @@ class PostElement extends React.Component {
 
     if(post.id){
       const timestamp = post.id.substring(0,8)
-      const date = Math.abs((new Date()) - (new Date( parseInt( timestamp, 16 ) * 1000 )))
+      date = Math.abs((new Date()) - (new Date( parseInt( timestamp, 16 ) * 1000 )))
     }
     //console.log("date = " + date)
     var time = "now";
@@ -129,7 +129,7 @@ class PostElement extends React.Component {
             {remove}
           </div>
           <div className="post__content-person">
-            <div className="post__content-person-name"><b>{post.user.username}</b></div>
+            <div className="post__content-person-name"><b style={{"fontSize":"2rem", "textTransform":"capitalize"}}>{post.user.username}</b></div>
             <div className="post__content-person-link"><i>@{post.user.username}</i></div>
             <div className="post__content-person-time"><i>{time}</i></div>
 

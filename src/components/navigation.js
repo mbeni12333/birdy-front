@@ -1,11 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
+
+
 
 let elements = [
-  {"name":"Timelines","icon":"fas fa-meteor", "to":"/profile"},
+  {"name":"Timelines","icon":"fas fa-meteor", "to":"/"},
   {"name":"Chat","icon":"fas fa-bolt", "to":"/chat"},
-  {"name":"Statistics","icon":"fas fa-chart-line", "to":"/login"},
-  {"name":"Events","icon":"fas fa-calendar-alt", "to":"/"},
+  {"name":"Statistics","icon":"fas fa-chart-line", "to":"/"},
+  {"name":"Events","icon":"fas fa-calendar-alt", "to":"/event"},
   {"name":"Users","icon":"fas fa-user-friends", "to":"/users"}
 ]
 
@@ -64,7 +67,7 @@ class Navigation extends React.Component {
                     key={index}
                     index={index}
                     activate={this.activate}
-                    selected={this.state.currentElement === index} />
+                    selected={this.state.currentElement === index}/>
                   );
                 })
             }
@@ -76,4 +79,10 @@ class Navigation extends React.Component {
 
 }
 
-export default Navigation;
+function mapStateToProps({user}){
+  return {
+    user
+  }
+}
+
+export default connect()(Navigation);

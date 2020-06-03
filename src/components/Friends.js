@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {Link} from 'react-router-dom';
 
 /*let people = [
   {"pseudo": "Mounib",
@@ -28,7 +28,7 @@ const navelement = (person, index) => {
         <div className="nav__element-label-status nav__element-label-status--online"></div>
       </div>
       <div className="nav__element-label">
-        <span className="nav__element-label-text">{person.username}</span>
+        <span className="nav__element-label-text"><b style={{"fontSize":"2rem", "textTransform":"capitalize"}}>{person.username}</b></span>
       </div>
     </div>
   );
@@ -51,7 +51,7 @@ class Friends extends React.Component{
           </div>
           <div className="nav__elements">
             {
-                people.map((person, index) => navelement(person, index))
+                people.map((person, index) => <Link to={"/profile/"+person.id}>{navelement(person, index)}</Link>)
             }
           </div>
           <div className="nav__element nav__button">

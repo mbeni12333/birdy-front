@@ -190,6 +190,18 @@
           }
         }
 
+        &.message--first{
+          .message__profile{
+            //visibility: visible;
+            //display: inline;
+          }
+          .message__content{
+            //margin-left: 0;
+            //border-bottom-left-radius: 5px ;
+            border-top-left-radius: 20px !important;
+          }
+        }
+
         .message__profile{
           margin-right:5px;
           display: none;

@@ -5,7 +5,7 @@ import image from '../images/graphql.png';
 import tests from '../images/test.jpeg';
 import {connect} from "react-redux";
 
-let posts = [
+/*let posts = [
   {
     "like": "1k",
     "share": "2k",
@@ -49,18 +49,26 @@ let posts = [
     "content": "i'm a new message that is being written right now",
     "timestamp": "14h"
   }
-];
+];*/
 
 const Timeline = (props) => {
 
-    const posts = [...props.posts].reverse()
+
+    var posts = []
+    
+    if(props.profile)
+      posts = props.posts.filter((post) => (post.author_id === props.profile)).reverse()
+      //posts = [...props.user.posts].reverse();
+    else{
+      posts = [...props.posts].reverse()
+    }
     //console.log(posts)
     return(
 
         <div className="card-container card-container--timeline">
           {
             posts.map((post, index) => {
-              console.log(post)
+              //console.log(post)
               return <Post
                       id={post._id}
                       user={props.friends[post.author_id]}

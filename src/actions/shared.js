@@ -13,6 +13,7 @@ export function handleInitialData(){
             dispatch(getInitialUsers(users));
             dispatch(getInitialPosts(posts));
           }).catch((err) => {
+            //alert(JSON.stringify(err))
             dispatch(logout());
             UnsetAutorozationToken();
           })

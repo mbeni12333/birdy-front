@@ -6,10 +6,13 @@ export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
 
 
 
-export function sendMessage(message){
+export function sendMessage(message, user_id){
   return{
     type: SEND_MESSAGE,
-    message
+    message:{
+      ...message,
+      user_id
+    }
   }
 }
 
