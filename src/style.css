@@ -399,10 +399,10 @@ a, a:focus, a:active, a:visited {
     display: flex;
     align-items: center;
     justify-content: flex-end; }
-    @media (min-width: 1300px) {
+    @media (min-width: 1600px) {
       .header__logo {
         flex: 1; } }
-    @media (max-width: 1300px) {
+    @media (max-width: 1600px) {
       .header__logo-label {
         display: none; } }
     .header__logo-label {
