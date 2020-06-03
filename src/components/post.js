@@ -4,6 +4,8 @@ import Fullsc from '../components/fullsc.js';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {handleRemovePost} from "../actions/posts";
+import {Twemoji} from 'react-emoji-render';
+
 
 class PostElement extends React.Component {
 
@@ -70,7 +72,10 @@ class PostElement extends React.Component {
     var matches = post.content.match(/\bhttps?:\/\/\S+/gi);
     matches = matches !== null ? matches : []
 
-    const content_without_links = post.content.replace(/\bhttps?:\/\/\S+/gi, "")
+    var content_without_links = post.content.replace(/\bhttps?:\/\/\S+/gi, "")
+
+    content_without_links = <Twemoji text={content_without_links}/>
+
     const photos = ((post.photos.length > 0) ||  (matches.length > 0)) ? (
       <div className="post__content-body__photo">
         {
