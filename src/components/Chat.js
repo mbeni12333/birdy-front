@@ -247,7 +247,7 @@ class Chat extends React.Component{
                         src={message.user_id && this.props.friends[message.user_id].avatar}/>
                       </div>
                       <Twemoji className="message__content" text={message.content ? message.content : "reconnect"}
-                      style={message.self === true ? colors[this.state.color] : {}}/>
+                      style={message.user_id === this.props.user.id ? colors[this.state.color] : {}}/>
 
                     </div>
                   );
