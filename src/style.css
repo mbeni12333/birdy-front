@@ -1453,7 +1453,7 @@ a, a:focus, a:active, a:visited {
 
 .header {
   height: 64px; }
-  @media (max-width: 1300px) {
+  @media (max-width: 1600px) {
     .header__logo {
       width: 64px; } }
 

@@ -50,6 +50,7 @@ class PostElement extends React.Component {
             "position": "absolute",
             "objectFit": "cover",
             "width": "200vw",
+            "height": "100vh",
             "top":"0",
             "left":"0",
             "filter":"blur(10px) brightness(0.4)",
@@ -58,7 +59,7 @@ class PostElement extends React.Component {
 
           <img src={this.state.lastPhoto} style={{
             "flex": "1",
-            "width": "auto",
+            "max-width": "100%",
             "objectFit": "contain",
             "max-height": "80%"
           }}/>
