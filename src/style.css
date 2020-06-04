@@ -924,9 +924,7 @@ a, a:focus, a:active, a:visited {
           .card-container .card--wall .wall__profile-picture img {
             height: 100%;
             width: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat; }
+            object-fit: cover; }
         .card-container .card--wall .wall__profile-buttons {
           width: 200px;
           display: flex;
